@@ -4,6 +4,8 @@ function fazPost(url, body){
     request.open("POST", url, true)
     request.setRequestHeader("Content-Type", "application/json")
     request.send(JSON.stringify(body))
+    
+
 
     request.onload = function(){
         console.log(this.responseText)
@@ -17,6 +19,7 @@ function autenticaUsuario(){
     let url = "http://localhost:8080/auth"
     let email = document.getElementById("email").value
     let senha = document.getElementById("senha").value
+    
 
     console.log(email)
     console.log(senha)
@@ -27,7 +30,8 @@ function autenticaUsuario(){
         "senha": senha
     
     }
-
+    
+    
 
     fazPost(url, body)    
 }
@@ -60,6 +64,26 @@ body ={
 }
 
 fazPost(url, body)
-
-
 }
+
+
+function resendToken(e) {
+    e.preventDefault();
+    document.getElementById("resendToken").addEventListener("click", resendToken)
+    localStorage.setItem('userInfo', JSON.stringify(userInfo))
+    var token = JSON.parse(localStorage.getItem('token'));
+    console.log(`Authorization=Bearer ${token}`)
+    fetch('/users/me', {
+        method: 'GET',
+        headers: {
+            'Authorization': 'Bearer ' + token
+        }
+    })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+            // window.location.href = 'http://localhost:3000/dashboard';
+        })
+        .catch(err => { console.log(err) })
+} 
+
