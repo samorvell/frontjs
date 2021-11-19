@@ -4,27 +4,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro da Empresa</title>
-    <link rel="stylesheet" href="css/styleCadastroEmpresa.css">
+    <title>Cadastra Funcionario</title>
+    <link rel="stylesheet" href="css/styleCadastro.css">
 </head>
 <body>
     <div id="main-container">
-        <h1>Cadastre sua Empresa</h1>
+        <h1>Cadastre seu Funcionario</h1>
         <script src="script/post.js"></script>
-        <form onsubmit="cadastraEmpresa()">
+       <!-- <form onsubmit="cadastraFuncionario()">-->
 
             <div class="full-box">
                 <label for="name">Nome</label>
-                <input type="text" name="nome" id="nome" placeholder="Digite seu nome">
+                <input type="text" name="nome" id="nome" placeholder="" required>
     
             </div>
 
-            <div class="full-box">
-                <label for="name">Razão Social</label>
-                <input type="text" name="razaoSocial" id="razaoSocial" placeholder="Digite a razão social">
-    
-            </div>
-
+           
             <div class="half-box spacing">
                 <label for="email">E-mail</label>
                 <input type="email" name="email" id="email" placeholder="Digite seu e-mail">
@@ -48,6 +43,12 @@
                 <input type="text" name="cnpj" id="cnpj" placeholder="Digite seu cnpj" autocomplete="off">
     
             </div>
+
+            <div class="half-box">
+                <label for="valorHora">Valor hora</label>
+                <input type="text" name="valorHora" id="valorHora" placeholder="Digite o valor hora" autocomplete="off">
+    
+            </div>
     
             <div class="full-box">           
                 <input type="checkbox" name="agreement" id="agreement" >
@@ -59,7 +60,7 @@
                 
             </div>           
 
-        </form>    
+        <!--</form>   --> 
     <p class="erro-validation template"></p>
 
     </div>

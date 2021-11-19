@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro da Empresa</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/styleCadastro.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class='card'>
+            <h1>Cadastre sua Empresa</h1>
+
+
+            <div id='msgError'></div>
+            <div class="label-float">
+                <label for="nome">Nome</label>
+                <input type="text" name="nome" id="nome" placeholder="" required>
+
+            </div>
+
+            <div class="label-float">
+                <label for="razaoSocial">Razão Social</label>
+                <input type="text" name="razaoSocial" id="razaoSocial" placeholder="" required>
+
+            </div>
+
+            <div class="label-float">
+                <label for="email">E-mail</label>
+                <input type="email" name="email" id="email" placeholder="" required>
+
+            </div>
+
+            <div class="label-float">
+                <label for="password">Senha</label>
+                <input type="password" name="senha" id="senha" placeholder="" required>
+
+            </div>
+
+            <div class="label-float">
+                <label for="cpf">CPF</label>
+                <input type="text" name="cpf" id="cpf" placeholder="" required autocomplete="off" maxlength="14">
+             </div>
+                <div class="label-float">
+                    <label for="cnpj">CNPJ</label>
+                    <input type="text" name="cnpj" id="cnpj" placeholder="" required autocomplete="off">
+
+                </div>
+
+                <div class='justify-center'>
+                    <button onclick='cadastraEmpresa()'>Cadastrar</button>
+                </div>
+
+            </div>
+            <p class="erro-validation template"></p>
+
+        </div>
+</body>
+
+</html>
+<script src="script/scripts_telas.js"></script>

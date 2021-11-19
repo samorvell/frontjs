@@ -20,5 +20,5 @@ app.use(express.static(path.join(__dirname,"public")));
 
 
 app.listen(porta, () => {
-    console.log(`Servidor execultando na porta: ${porta}`)
+    console.log(`Servidor execultando em: http://localhost:${porta}`)
 })
