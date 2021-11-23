@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Funcionario</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/stylecadfunc.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class='card'>
+            <h1>Cadastre Funcionario</h1>
+
+
+            <div id='msgError'></div>
+            <div id='msgSuccess'></div>
+            <div class="label-float">
+                <input type="text" name="nome" id="nome" placeholder=" " required>
+                <label id="labelNome" for="nome">Nome</label>
+            </div>
+
+            <div class="label-float">
+                <input type="text" name="valorHora" id="valorHora" placeholder=" " required>
+                <label for="valorHora" id="labelValorHora">Valor Hora</label>
+            </div>
+
+            <div class="label-float">
+                <input type="email" name="email" id="email" placeholder="" required>
+                <label id="labelEmail" for="email">E-mail</label>
+            </div>
+
+            <div class="label-float">
+                <input type="text" name="cpf" id="cpf" placeholder="" required autocomplete="off" maxlength="14">
+                <label id="labelCpf" for="cpf">CPF</label>
+            </div>
+            <div class="label-float">
+                <input type="text" name="cnpj" id="cnpj" placeholder="" required autocomplete="off">
+                <label id="labelCnpj" for="cnpj">CNPJ</label>
+
+            </div>
+
+            <div class="label-float">
+                <input type="password" name="senha" id="senha" placeholder="" required>
+                <label id="labelSenha" for="password">Senha</label>
+                <i id="senha" class="fa fa-eye" aria-hidden="true"></i>
+            </div>
+
+            <div class="label-float">
+                <input type="password" name="confirmSenha" id="confirmSenha" placeholder="" required>
+                <label id="labelConfirmSenha" for="password">Confirme Senha</label>
+                <i id="confirmSenha" class="fa fa-eye" aria-hidden="true"></i>
+            </div>
+
+            <div class='justify-center'>
+                <button onclick='cadastraEmpresa()'>Cadastrar</button>
+            </div>
+
+        </div>
+        <p class="erro-validation template"></p>
+
+    </div>
+</body>
+
+</html>
+<script src="script/scripts_telas.js"></script>

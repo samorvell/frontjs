@@ -14,50 +14,53 @@
         <div class='card'>
             <h1>Cadastre sua Empresa</h1>
 
-
             <div id='msgError'></div>
-            <div class="label-float">
-                <label for="nome">Nome</label>
-                <input type="text" name="nome" id="nome" placeholder="" required>
+            <div id='msgSuccess'></div>
 
+            <div class="label-float">
+                <input type="text" name="nome" id="nome" placeholder=" " required>
+                <label id="labelNome" for="nome">Nome</label>
             </div>
 
             <div class="label-float">
-                <label for="razaoSocial">Razão Social</label>
-                <input type="text" name="razaoSocial" id="razaoSocial" placeholder="" required>
-
+                <input type="text" name="razaoSocial" id="razaoSocial" placeholder=" " required>
+                <label id="labelRazaoSocial" for="razaoSocial">Razão Social</label>
             </div>
 
             <div class="label-float">
-                <label for="email">E-mail</label>
-                <input type="email" name="email" id="email" placeholder="" required>
-
+                <input type="text" name="email" id="email" placeholder=" " required>
+                <label id="labelEmail" for="email">E-mail</label>
             </div>
 
             <div class="label-float">
-                <label for="password">Senha</label>
-                <input type="password" name="senha" id="senha" placeholder="" required>
-
+                <input type="text" name="cpf" id="cpf" placeholder=" " required autocomplete="off" maxlength="14">
+                <label id="labelCpf" for="cpf">CPF</label>
+            </div>
+            <div class="label-float">
+                <input type="text" name="cnpj" id="cnpj" placeholder=" " required autocomplete="off">
+                <label id="labelCnpj" for="cnpj">CNPJ</label>
             </div>
 
             <div class="label-float">
-                <label for="cpf">CPF</label>
-                <input type="text" name="cpf" id="cpf" placeholder="" required autocomplete="off" maxlength="14">
-             </div>
-                <div class="label-float">
-                    <label for="cnpj">CNPJ</label>
-                    <input type="text" name="cnpj" id="cnpj" placeholder="" required autocomplete="off">
-
-                </div>
-
-                <div class='justify-center'>
-                    <button onclick='cadastraEmpresa()'>Cadastrar</button>
-                </div>
-
+                <input type="password" name="senha" id="senha" placeholder=" " required>
+                <label id="labelSenha" for="password">Senha</label>
+                <i id="verSenha" class="fa fa-eye" aria-hidden="true"></i>
             </div>
-            <p class="erro-validation template"></p>
+
+            <div class="label-float">
+                <input type="password" name="confirmSenha" id="confirmSenha" placeholder=" " required>
+                <label id="labelConfirmSenha" for="password">Confirme a Senha</label>
+                <i id="verConfirmSenha" class="fa fa-eye" aria-hidden="true"></i>
+            </div>
+
+            <div class='justify-center'>
+                <button onclick='cadastrar()'>Cadastrar</button>
+            </div>
 
         </div>
+       
+
+    </div>
 </body>
 
 </html>
