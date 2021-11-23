@@ -1,6 +1,7 @@
+let url = "http://192.168.100.14:8080/api/cadastrar-pj"
+
 let btn = document.querySelector('#verSenha')
 let btnConfirm = document.querySelector('#verConfirmSenha')
-
 
 let nome = document.querySelector('#nome')
 let labelNome = document.querySelector('#labelNome')
@@ -26,115 +27,213 @@ let msgError = document.querySelector('#msgError')
 let msgSuccess = document.querySelector('#msgSuccess')
 
 nome.addEventListener('keyup', () => {
-  if(nome.value.length <= 2){
-    labelNome.setAttribute('style', 'color: red')
-    labelNome.innerHTML = 'Nome *Insira no minimo 3 caracteres'
-    nome.setAttribute('style', 'border-color: red')
-    validNome = false
-  } else {
-    labelNome.setAttribute('style', 'color: green')
-    labelNome.innerHTML = 'Nome'
-    nome.setAttribute('style', 'border-color: green')
-    validNome = true
-  }
+    if (nome.value.length <= 2) {
+        labelNome.setAttribute('style', 'color: red')
+        labelNome.innerHTML = 'Nome *Insira no minimo 3 caracteres'
+        nome.setAttribute('style', 'border-color: red')
+        validNome = false
+    } else {
+        labelNome.setAttribute('style', 'color: green')
+        labelNome.innerHTML = 'Nome'
+        nome.setAttribute('style', 'border-color: green')
+        validNome = true
+    }
 })
 
 razaoSocial.addEventListener('keyup', () => {
-  if(razaoSocial.value.length <= 4){
-    labelRazaoSocial.setAttribute('style', 'color: red')
-    labelRazaoSocial.innerHTML = 'Razão Social *Insira no minimo 5 caracteres'
-    razaoSocial.setAttribute('style', 'border-color: red')
-    validRazaoSocial = false
-  } else {
-    labelRazaoSocial.setAttribute('style', 'color: green')
-    labelRazaoSocial.innerHTML = 'Razão Social'
-    razaoSocial.setAttribute('style', 'border-color: green')
-    validRazaoSocial = true
-  }
+    if (razaoSocial.value.length <= 4) {
+        labelRazaoSocial.setAttribute('style', 'color: red')
+        labelRazaoSocial.innerHTML = 'Razão Social *Insira no minimo 5 caracteres'
+        razaoSocial.setAttribute('style', 'border-color: red')
+        validRazaoSocial = false
+    } else {
+        labelRazaoSocial.setAttribute('style', 'color: green')
+        labelRazaoSocial.innerHTML = 'Razão Social'
+        razaoSocial.setAttribute('style', 'border-color: green')
+        validRazaoSocial = true
+    }
 })
 
 senha.addEventListener('keyup', () => {
-  if(senha.value.length <= 5){
-    labelSenha.setAttribute('style', 'color: red')
-    labelSenha.innerHTML = 'Senha *Insira no minimo 6 caracteres'
-    senha.setAttribute('style', 'border-color: red')
-    validSenha = false
-  } else {
-    labelSenha.setAttribute('style', 'color: green')
-    labelSenha.innerHTML = 'Senha'
-    senha.setAttribute('style', 'border-color: green')
-    validSenha = true
-  }
+    if (senha.value.length <= 5) {
+        labelSenha.setAttribute('style', 'color: red')
+        labelSenha.innerHTML = 'Senha *Insira no minimo 6 caracteres'
+        senha.setAttribute('style', 'border-color: red')
+        validSenha = false
+    } else {
+        labelSenha.setAttribute('style', 'color: green')
+        labelSenha.innerHTML = 'Senha'
+        senha.setAttribute('style', 'border-color: green')
+        validSenha = true
+    }
 })
 
 confirmSenha.addEventListener('keyup', () => {
-  if(senha.value != confirmSenha.value){
-    labelConfirmSenha.setAttribute('style', 'color: red')
-    labelConfirmSenha.innerHTML = 'Confirmar Senha *As senhas não conferem'
-    confirmSenha.setAttribute('style', 'border-color: red')
-    validConfirmSenha = false
-  } else {
-    labelConfirmSenha.setAttribute('style', 'color: green')
-    labelConfirmSenha.innerHTML = 'Confirmar Senha'
-    confirmSenha.setAttribute('style', 'border-color: green')
-    validConfirmSenha = true
-  }
+    if (senha.value != confirmSenha.value) {
+        labelConfirmSenha.setAttribute('style', 'color: red')
+        labelConfirmSenha.innerHTML = 'Confirmar Senha *As senhas não conferem'
+        confirmSenha.setAttribute('style', 'border-color: red')
+        validConfirmSenha = false
+    } else {
+        labelConfirmSenha.setAttribute('style', 'color: green')
+        labelConfirmSenha.innerHTML = 'Confirmar Senha'
+        confirmSenha.setAttribute('style', 'border-color: green')
+        validConfirmSenha = true
+    }
 })
 
-function cadastrar(){
-  if(validNome && validUsuario && validSenha && validConfirmSenha){
-    let listaUser = JSON.parse(localStorage.getItem('listaUser') || '[]')
-    
-    listaUser.push(
-    {
-      nomeCad: nome.value,
-      userCad: usuario.value,
-      senhaCad: senha.value
+email.addEventListener('keyup', () => {
+    if (senha.value != confirmSenha.value) {
+        labelEmail.setAttribute('style', 'color: red')
+        labelEmail.innerHTML = 'Confirmar Senha *As senhas não conferem'
+        email.setAttribute('style', 'border-color: red')
+        validEmail = false
+    } else {
+        labelEmail.setAttribute('style', 'color: green')
+        labelEmail.innerHTML = 'Confirmar Senha'
+        email.setAttribute('style', 'border-color: green')
+        validEmail = true
     }
-    )
-    
-    localStorage.setItem('listaUser', JSON.stringify(listaUser))
-    
-   
-    msgSuccess.setAttribute('style', 'display: block')
-    msgSuccess.innerHTML = '<strong>Cadastrando usuário...</strong>'
-    msgError.setAttribute('style', 'display: none')
-    msgError.innerHTML = ''
-    
-    setTimeout(()=>{
-        window.location.href = 'https://cdpn.io/thicode/debug/ZELzYxV/dXAqBaRyvwJk'
-    }, 3000)
-  
-    
-  } else {
-    msgError.setAttribute('style', 'display: block')
-    msgError.innerHTML = '<strong>Preencha todos os campos corretamente antes de cadastrar</strong>'
-    msgSuccess.innerHTML = ''
-    msgSuccess.setAttribute('style', 'display: none')
-  }
+})
+
+function fazPost(url, body) {
+    console.log("Body=", body)
+    let request = new XMLHttpRequest()
+    request.open("POST", url, true)
+    request.setRequestHeader("Content-Type", "application/json")
+    request.send(JSON.stringify(body))
+
+
+
+    request.onload = function () {
+        console.log(this.responseText)
+    }
+
+    return request.responseText
 }
 
-btn.addEventListener('click', ()=>{
-  let inputSenha = document.querySelector('#senha')
-  
-  if(inputSenha.getAttribute('type') == 'password'){
-    inputSenha.setAttribute('type', 'text')
-  } else {
-    inputSenha.setAttribute('type', 'password')
-  }
+function cadastraEmpresa() {
+    //let url = "http://localhost:8080/api/cadastrar-pj"
+    event.preventDefault()
+
+    let nome = document.getElementById("nome").value
+    let email = document.getElementById("email").value
+    let senha = document.getElementById("senha").value
+    let cpf = document.getElementById("cpf").value
+    let razaoSocial = document.getElementById("razaoSocial").value
+    let cnpj = document.getElementById("cnpj").value
+
+   /* console.log(nome)
+    console.log(email)
+    console.log(senha)
+    console.log(cpf)
+    console.log(razaoSocial)
+    console.log(cnpj)*/
+
+    body = {
+
+        "nome": nome,
+        "email": email,
+        "senha": senha,
+        "cpf": cpf,
+        "razaoSocial": razaoSocial,
+        "cnpj": cnpj
+    }
+
+    if (validNome && validRazaoSocial &&
+        validSenha && validConfirmSenha &&
+        validEmail) {
+            window.alert("deu bom");
+        //let listaUser = JSON.parse(localStorage.getItem('listaUser') || '[]')
+
+        /* listaUser.push(
+             {
+                 nomeCad: nome.value,
+                 userCad: usuario.value,
+                 senhaCad: senha.value
+             }
+         )*/
+
+        //localStorage.setItem('listaUser', JSON.stringify(listaUser))
+
+
+        msgSuccess.setAttribute('style', 'display: block')
+        msgSuccess.innerHTML = '<strong>Cadastrando usuário...</strong>'
+        msgError.setAttribute('style', 'display: none')
+        msgError.innerHTML = ''
+
+        setTimeout(() => {
+            window.location.href = 'login'
+        }, 3000)
+
+
+    } else {
+        msgError.setAttribute('style', 'display: block')
+        msgError.innerHTML = '<strong>Preencha todos os campos corretamente antes de cadastrar</strong>'
+        msgSuccess.innerHTML = ''
+        msgSuccess.setAttribute('style', 'display: none')
+    }
+
+
+    fazPost(url, body)
+}
+
+
+
+function cadastrar() {
+    if (validNome && validUsuario && validSenha && validConfirmSenha) {
+        let listaUser = JSON.parse(localStorage.getItem('listaUser') || '[]')
+
+        listaUser.push(
+            {
+                nomeCad: nome.value,
+                userCad: usuario.value,
+                senhaCad: senha.value
+            }
+        )
+
+        localStorage.setItem('listaUser', JSON.stringify(listaUser))
+
+
+        msgSuccess.setAttribute('style', 'display: block')
+        msgSuccess.innerHTML = '<strong>Cadastrando usuário...</strong>'
+        msgError.setAttribute('style', 'display: none')
+        msgError.innerHTML = ''
+
+        setTimeout(() => {
+            window.location.href = 'https://cdpn.io/thicode/debug/ZELzYxV/dXAqBaRyvwJk'
+        }, 3000)
+
+
+    } else {
+        msgError.setAttribute('style', 'display: block')
+        msgError.innerHTML = '<strong>Preencha todos os campos corretamente antes de cadastrar</strong>'
+        msgSuccess.innerHTML = ''
+        msgSuccess.setAttribute('style', 'display: none')
+    }
+}
+
+btn.addEventListener('click', () => {
+    let inputSenha = document.querySelector('#senha')
+
+    if (inputSenha.getAttribute('type') == 'password') {
+        inputSenha.setAttribute('type', 'text')
+    } else {
+        inputSenha.setAttribute('type', 'password')
+    }
 })
 
-btnConfirm.addEventListener('click', ()=>{
-  let inputConfirmSenha = document.querySelector('#confirmSenha')
-  
-  if(inputConfirmSenha.getAttribute('type') == 'password'){
-    inputConfirmSenha.setAttribute('type', 'text')
-  } else {
-    inputConfirmSenha.setAttribute('type', 'password')
-  }
+btnConfirm.addEventListener('click', () => {
+    let inputConfirmSenha = document.querySelector('#confirmSenha')
+
+    if (inputConfirmSenha.getAttribute('type') == 'password') {
+        inputConfirmSenha.setAttribute('type', 'text')
+    } else {
+        inputConfirmSenha.setAttribute('type', 'password')
+    }
 })
 
 
 
-  
-  
+
+
