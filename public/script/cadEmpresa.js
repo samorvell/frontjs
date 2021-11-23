@@ -82,8 +82,8 @@ confirmSenha.addEventListener('keyup', () => {
     }
 })
 
-email.addEventListener('keyup', () => {
-    if (senha.value != confirmSenha.value) {
+/*email.addEventListener('keyup', () => {
+    if (email.value != email.value) {
         labelEmail.setAttribute('style', 'color: red')
         labelEmail.innerHTML = 'Confirmar Senha *As senhas não conferem'
         email.setAttribute('style', 'border-color: red')
@@ -94,7 +94,7 @@ email.addEventListener('keyup', () => {
         email.setAttribute('style', 'border-color: green')
         validEmail = true
     }
-})
+})*/
 
 function fazPost(url, body) {
     console.log("Body=", body)
@@ -141,9 +141,9 @@ function cadastraEmpresa() {
     }
 
     if (validNome && validRazaoSocial &&
-        validSenha && validConfirmSenha &&
-        validEmail) {
-            window.alert("deu bom");
+        validSenha && validConfirmSenha /*&&
+        validEmail*/) {
+            //window.alert("deu bom");
         //let listaUser = JSON.parse(localStorage.getItem('listaUser') || '[]')
 
         /* listaUser.push(
