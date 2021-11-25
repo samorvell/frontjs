@@ -1,0 +1,55 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de lançamento funcionario</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/listaFuncionario.css">
+</head>
+
+<body>
+
+    <div class='container'>
+        <div class='card'>
+            <h1> Lançamento de ponto </h1>
+
+            <div class="label-float">
+                <input type="text" id="funcionarioId" placeholder=" " required>
+                <label id="labelFuncionarioId" for="nome">Funcionário Id</label>
+            </div>
+
+            <div class="label-float">
+                <input type="text" id="descricao" placeholder=" " required>
+                <label id="labelDescricao" for="descricao">Descrição</label>
+            </div>
+
+            <div class="label-float">
+                <input type="datetime-local" id="data" placeholder=" " required>
+                <label id="labelData" for="data">Data</label>
+            </div>
+
+            <div>
+                <!--coleta do estado civil: fonte: W3C-->
+                <label class="label-float" for="tipo">Tipo</label>
+                <div class="div-select">
+                    <select name="tipo" id="tipo" required>
+                        <!-- <select name="tipo" id="tipo" required>-->
+                        <option selected disabled value="">Selecione</option>
+                        <option value="INICIO_TRABALHO">Inicio de trabalho</option>
+                        <option value="TERMINO_TRABALHO">Termino de trabalho</option>
+                        <option value="INICIO_ALMOCO">Saída para almoço</option>
+                        <option value="TERMINO_ALMOCO">Retorno do almoço</option>
+                        <option value="INICIO_PAUSA">Inicio de pausa</option>
+                        <option value="TERMINO_PAUSA">Termino de pausa</option>
+                    </select>
+                </div>
+
+                <div class='justify-center'>
+                    <button onclick='cadastrar()'>Registrar</button>
+                    <button id="remove" onclick='deletar()'>Remover</button>
+                </div>
+
+
+            </div>
+        </div>
+</body>
+<script src="script/.js"></script>

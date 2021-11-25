@@ -8,6 +8,10 @@ app.get("/", function(req, res){
     res.sendFile(__dirname + "/src/index.html")
 })
 
+app.get("/listaLancamento", function(req, res){
+    res.sendFile(__dirname + "/src/listaLancamento.html")
+})
+
 app.get("/login", function(req, res){
     res.sendFile(__dirname + "/src/login.html")
 })

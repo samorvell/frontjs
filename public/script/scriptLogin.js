@@ -62,6 +62,7 @@ function fazPost(urllogin, body) {
 }
 
 
+
 function autenticaUsuario() {
 
   let inputEmail = document.querySelector('#email')

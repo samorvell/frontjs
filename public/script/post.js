@@ -63,7 +63,7 @@ body ={
     "cnpj":cnpj    
 }
 
-fazPost(url, body)
+fazPost(urlCadPj, body)
 }
 
 
@@ -86,4 +86,3 @@ function resendToken(e) {
         })
         .catch(err => { console.log(err) })
 } 
-

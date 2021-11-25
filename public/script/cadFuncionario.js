@@ -1,4 +1,4 @@
-let url = "http://192.168.100.14:8080/api/cadastrar-pj"
+let url = "http://192.168.100.14:8080/api/cadastrar-pf"
 
 let btn = document.querySelector('#verSenha')
 let btnConfirm = document.querySelector('#verConfirmSenha')
@@ -7,21 +7,21 @@ let nome = document.querySelector('#nome')
 let labelNome = document.querySelector('#labelNome')
 let validNome = false
 
-let razaoSocial = document.querySelector('#razaoSocial')
-let labelRazaoSocial = document.querySelector('#labelRazaoSocial')
-let validRazaoSocial = false
+let valorHora = document.querySelector('#valorHora')
+let labelValorHora = document.querySelector('#labelValorHora')
+let validValorHora = false
 
 let email = document.querySelector('#email')
 let labelEmail = document.querySelector('#labelEmail')
 let validEmail = false
 
-let cpf = document.querySelector('#cpf')
-let labelCpf = document.querySelector('#labelCpf')
-let validCpf = false
-
 let cnpj = document.querySelector('#cnpj')
 let labelCnpj = document.querySelector('#labelCnpj')
 let validCnpj = false
+
+let cpf = document.querySelector('#cpf')
+let labelCpf = document.querySelector('#labelCpf')
+let validCpf = false
 
 let senha = document.querySelector('#senha')
 let labelSenha = document.querySelector('#labelSenha')
@@ -48,17 +48,31 @@ nome.addEventListener('keyup', () => {
     }
 })
 
-razaoSocial.addEventListener('keyup', () => {
-    if (razaoSocial.value.length <= 4) {
-        labelRazaoSocial.setAttribute('style', 'color: red')
-        labelRazaoSocial.innerHTML = 'Razão Social *Insira no minimo 5 caracteres'
-        razaoSocial.setAttribute('style', 'border-color: red')
-        validRazaoSocial = false
+email.addEventListener('keyup', () => {
+    if (email.value.length <= 6) {
+        labelEmail.setAttribute('style', 'color: red')
+        labelEmail.innerHTML = 'E-mail *Insira no minimo 7 caracteres'
+        email.setAttribute('style', 'border-color: red')
+        validEmail = false
     } else {
-        labelRazaoSocial.setAttribute('style', 'color: green')
-        labelRazaoSocial.innerHTML = 'Razão Social'
-        razaoSocial.setAttribute('style', 'border-color: green')
-        validRazaoSocial = true
+        labelEmail.setAttribute('style', 'color: green')
+        labelEmail.innerHTML = 'E-mail'
+        email.setAttribute('style', 'border-color: green')
+        validEmail = true
+    }
+})
+
+cpf.addEventListener('keyup', () => {
+    if (cpf.value.length <= 10) {
+        labelCpf.setAttribute('style', 'color: red')
+        labelCpf.innerHTML = 'CPF *Insira os 11 caracteres'
+        cpf.setAttribute('style', 'border-color: red')
+        validCpf = false
+    } else {
+        labelCpf.setAttribute('style', 'color: green')
+        labelCpf.innerHTML = 'CPF'
+        cpf.setAttribute('style', 'border-color: green')
+        validCpf = true
     }
 })
 
@@ -70,23 +84,23 @@ cnpj.addEventListener('keyup', () => {
         validCnpj = false
     } else {
         labelCnpj.setAttribute('style', 'color: green')
-        labelCnpj.innerHTML = 'Senha'
+        labelCnpj.innerHTML = 'CNPJ'
         cnpj.setAttribute('style', 'border-color: green')
         validCnpj = true
     }
 })
 
-cpf.addEventListener('keyup', () => {
-    if (cpf.value.length <= 10 || cpf.length >=11) {
-        labelCpf.setAttribute('style', 'color: red')
-        labelCpf.innerHTML = 'CPF *Insira os 11 caracteres'
-        cpf.setAttribute('style', 'border-color: red')
-        validCpf = false
+valorHora.addEventListener('keyup', () => {
+    if (valorHora.value.length <= 1) {
+        labelValorHora.setAttribute('style', 'color: red')
+        //labelValorHora.innerHTML = 'Razão Social *Insira no minimo 5 caracteres'
+        valorHora.setAttribute('style', 'border-color: red')
+        validValorHora = false
     } else {
-        labelCpf.setAttribute('style', 'color: green')
-        labelCpf.innerHTML = 'CPF'
-        cpf.setAttribute('style', 'border-color: green')
-        validCpf = true
+        labelValorHora.setAttribute('style', 'color: green')
+        labelValorHora.innerHTML = 'Valor hora'
+        valorHora.setAttribute('style', 'border-color: green')
+        validValorHora = true
     }
 })
 
@@ -104,7 +118,6 @@ senha.addEventListener('keyup', () => {
     }
 })
 
-
 confirmSenha.addEventListener('keyup', () => {
     if (senha.value != confirmSenha.value) {
         labelConfirmSenha.setAttribute('style', 'color: red')
@@ -119,19 +132,6 @@ confirmSenha.addEventListener('keyup', () => {
     }
 })
 
-/*email.addEventListener('keyup', () => {
-    if (email.value != email.value) {
-        labelEmail.setAttribute('style', 'color: red')
-        labelEmail.innerHTML = 'Confirmar Senha *As senhas não conferem'
-        email.setAttribute('style', 'border-color: red')
-        validEmail = false
-    } else {
-        labelEmail.setAttribute('style', 'color: green')
-        labelEmail.innerHTML = 'Confirmar Senha'
-        email.setAttribute('style', 'border-color: green')
-        validEmail = true
-    }
-})*/
 
 function fazPost(url, body) {
     console.log("Body=", body)
@@ -149,7 +149,7 @@ function fazPost(url, body) {
     return request.responseText
 }
 
-function cadastraEmpresa() {
+function regfunc() {
     //let url = "http://localhost:8080/api/cadastrar-pj"
     event.preventDefault()
 
@@ -157,15 +157,8 @@ function cadastraEmpresa() {
     let email = document.getElementById("email").value
     let senha = document.getElementById("senha").value
     let cpf = document.getElementById("cpf").value
-    let razaoSocial = document.getElementById("razaoSocial").value
+    let valorHora = document.getElementById("valorHora").value
     let cnpj = document.getElementById("cnpj").value
-
-   /* console.log(nome)
-    console.log(email)
-    console.log(senha)
-    console.log(cpf)
-    console.log(razaoSocial)
-    console.log(cnpj)*/
 
     body = {
 
@@ -173,29 +166,17 @@ function cadastraEmpresa() {
         "email": email,
         "senha": senha,
         "cpf": cpf,
-        "razaoSocial": razaoSocial,
+        "valorHora": valorHora,
         "cnpj": cnpj
     }
 
-    if (validNome && validRazaoSocial &&
-        validSenha && validConfirmSenha && validCnpj /*&&
-        validEmail*/) {
+    if (validNome && validValorHora &&
+        validSenha && validConfirmSenha && validCnpj &&
+        validEmail && validCpf) {
             //window.alert("deu bom");
-        //let listaUser = JSON.parse(localStorage.getItem('listaUser') || '[]')
-
-        /* listaUser.push(
-             {
-                 nomeCad: nome.value,
-                 userCad: usuario.value,
-                 senhaCad: senha.value
-             }
-         )*/
-
-        //localStorage.setItem('listaUser', JSON.stringify(listaUser))
-
-
+       
         msgSuccess.setAttribute('style', 'display: block')
-        msgSuccess.innerHTML = '<strong>Cadastrando empresa...</strong>'
+        msgSuccess.innerHTML = '<strong>Cadastrando funcionário...</strong>'
         msgError.setAttribute('style', 'display: none')
         msgError.innerHTML = ''
 
@@ -216,7 +197,6 @@ function cadastraEmpresa() {
 
    
 }
-
 
 
 
