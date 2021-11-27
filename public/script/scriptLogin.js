@@ -1,4 +1,4 @@
-let urllogin = "http://localhost:8080/auth"
+let urllogin = "http://192.168.100.14:8080/auth"
 let btn = document.querySelector('.fa-eye')
 //let validToken = ''
 btn.addEventListener('click', () => {

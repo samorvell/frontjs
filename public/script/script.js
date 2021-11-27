@@ -17,7 +17,7 @@ function dataFixa() {
 }
 
 dataFixa()
-btn.addEventListener('click', () => {
+/*btn.addEventListener('click', () => {
   let inputSenha = document.querySelector('#senha')
 
   if (inputSenha.getAttribute('type') == 'password') {
@@ -75,10 +75,4 @@ function fazPost(urllogin, body) {
 
 
 
-  return request.status
-}
-
-
-
-
-
+  return request.status*/
