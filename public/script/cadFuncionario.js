@@ -1,4 +1,4 @@
-let url = "http://192.168.100.14:8080/api/cadastrar-pf"
+let url = "http://localhost:8080/api/cadastrar-pf"
 
 let btn = document.querySelector('#verSenha')
 let btnConfirm = document.querySelector('#verConfirmSenha')
@@ -132,7 +132,17 @@ confirmSenha.addEventListener('keyup', () => {
     }
 })
 
+function clear() {
+    document.getElementById("nome").value = ''
+    document.getElementById("email").value = ''
+    document.getElementById("senha").value = ''
+    document.getElementById("cpf").value = ''
+    document.getElementById("valorHora").value = ''
+    document.getElementById("cnpj").value = ''
+    document.getElementById("confirmSenha").value = ''
 
+
+}
 function fazPost(url, body) {
     console.log("Body=", body)
     let request = new XMLHttpRequest()
@@ -146,6 +156,7 @@ function fazPost(url, body) {
         console.log(this.responseText)
     }
 
+    clear()
     return request.responseText
 }
 
@@ -173,15 +184,15 @@ function regfunc() {
     if (validNome && validValorHora &&
         validSenha && validConfirmSenha && validCnpj &&
         validEmail && validCpf) {
-            //window.alert("deu bom");
-       
+        //window.alert("deu bom");
+
         msgSuccess.setAttribute('style', 'display: block')
-        msgSuccess.innerHTML = '<strong>Cadastrando funcionário...</strong>'
-        msgError.setAttribute('style', 'display: none')
+        msgSuccess.innerHTML = '<strong>Funcionario Cadastrado...</strong>'
+        msgError.setAttribute('style', 'di</form>splay: none')
         msgError.innerHTML = ''
 
         setTimeout(() => {
-            window.location.href = 'login'
+            // window.location.href = 'login'
         }, 3000)
 
         fazPost(url, body)
@@ -195,7 +206,7 @@ function regfunc() {
     }
 
 
-   
+
 }
 
 

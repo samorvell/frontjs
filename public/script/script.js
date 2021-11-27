@@ -1,6 +1,22 @@
 let urllogin = "http://localhost:8080/auth"
 let btn = document.querySelector('.fa-eye')
 //let validToken = ''
+let data = new Date
+function dataFixa() {
+  var data = new Date(),
+    day = data.getDate().toString().padStart(2, '0'),
+    mouth = (data.getMonth() + 1).toString().padStart(2, '0'), //+1 pois no getMonth Janeiro começa com zero.
+    yer = data.getFullYear(),
+    hour = data.getHours(),
+    minute = data.getMinutes(),
+    second = data.getSeconds();
+  fdata = day + '/' + mouth + '/' + yer + ' ' + hour + ':' + minute + ':' + second;
+
+  document.getElementById("data").value = fdata
+
+}
+
+dataFixa()
 btn.addEventListener('click', () => {
   let inputSenha = document.querySelector('#senha')
 
@@ -46,7 +62,7 @@ function fazPost(urllogin, body) {
       validToken = (datatoken.data.token)
       localStorage.setItem('token', validToken)
       console.log(validToken)
-      window.location.href = 'cadastroFuncionario'
+      //window.location.href = 'cadastroFuncionario'
     }
 
 
@@ -58,46 +74,11 @@ function fazPost(urllogin, body) {
 
 
 
+
   return request.status
 }
 
 
 
-function autenticaUsuario() {
-
-  let inputEmail = document.querySelector('#email')
-  let emailLabel = document.querySelector('#emailLabel')
-  let inputSenha = document.querySelector('#senha')
-  let senhaLabel = document.querySelector('#senhaLabel')
-
-  event.preventDefault()
-
-  let email = document.getElementById("email").value
-  let senha = document.getElementById("senha").value
 
 
-
-  body = {
-
-    "email": email,
-    "senha": senha
-  }
-
-  if (email == '' || senha == '') {
-    emailLabel.setAttribute('style', 'color: red')
-    inputEmail.setAttribute('style', 'border-color: red')
-    senhaLabel.setAttribute('style', 'color: red')
-    inputSenha.setAttribute('style', 'border-color: red')
-    msgError.setAttribute('style', 'display: block')
-    msgError.innerHTML = 'Usuário ou senha incorreto'
-    inputEmail.focus()
-
-  } else {
-
-    fazPost(urllogin, body)
-  }
-
-
-
-
-}

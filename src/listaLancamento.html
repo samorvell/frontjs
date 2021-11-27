@@ -3,7 +3,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de lançamento funcionario</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/listaFuncionario.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
@@ -22,17 +22,15 @@
                 <label id="labelDescricao" for="descricao">Descrição</label>
             </div>
 
-            <div class="label-float">
-                <input type="datetime-local" id="data" placeholder=" " required>
+            <div class="label-float1">
+                <input readonly type="datetime" id="data" placeholder=" " required>
                 <label id="labelData" for="data">Data</label>
             </div>
 
             <div>
-                <!--coleta do estado civil: fonte: W3C-->
                 <label class="label-float" for="tipo">Tipo</label>
                 <div class="div-select">
                     <select name="tipo" id="tipo" required>
-                        <!-- <select name="tipo" id="tipo" required>-->
                         <option selected disabled value="">Selecione</option>
                         <option value="INICIO_TRABALHO">Inicio de trabalho</option>
                         <option value="TERMINO_TRABALHO">Termino de trabalho</option>
@@ -45,11 +43,11 @@
 
                 <div class='justify-center'>
                     <button onclick='cadastrar()'>Registrar</button>
-                    <button id="remove" onclick='deletar()'>Remover</button>
+
                 </div>
 
 
             </div>
         </div>
 </body>
-<script src="script/.js"></script>
+<script src="script/script.js"></script>

@@ -24,9 +24,18 @@ app.get("/cadastroFuncionario", function(req, res){
     res.sendFile(__dirname + "/src/cadastroFuncionario.html")
 })
 
-app.get("/teste", function(req, res){
-    res.sendFile(__dirname + "/src/testecad.html")
+app.get("/home", function(req, res){
+    res.sendFile(__dirname + "/src/home.html")
 })
+
+app.get("/aplicativo", function(req, res){
+    res.sendFile(__dirname + "/src/aplicativo.html")
+})
+
+app.get("/sobre", function(req, res){
+    res.sendFile(__dirname + "/src/sobre.html")
+})
+
 
 app.use(express.static(path.join(__dirname,"public")));
 
