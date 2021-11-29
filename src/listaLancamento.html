@@ -32,6 +32,7 @@
                 <input type="text" id="descricao" placeholder=" " required>
                 <label id="labelDescricao" for="descricao">Descrição</label>
             </div>
+
             <div class="label-float"><br>
                 <input readonly type="datetime" id="data" placeholder=" " value="Data" disabled/>
                 <label id="labelData" for="data">Data</label>
@@ -54,6 +55,27 @@
                 <div class='justify-center'>
                     <button onclick='cadastrar()'>Registrar</button>
 
+                </div>
+                <div class="content">
+                    <table border="1">
+                        <thead>
+                            <th class="central">ID</th>
+                            <th>Data</th>
+                            <th>tipo</th>
+                            <th>Ações</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="central">1</td>
+                                <td>27/11/21</td>
+                                <td>Saída para almoço</td>
+                                <td>
+                                    <img src="img/edit.svg" alt="">
+                                    <img src="img/delete.svg" alt="">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
 
 

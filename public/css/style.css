@@ -88,16 +88,7 @@ h1 {
     margin-top: 13px;
     transition: all .3s ease-out;
 }
-.label-float-date{
-    color: #272262;
-    pointer-events: none;
-    position: absolute;
-    font-size: 1px;
-    top: 0;
-    left: 0;
-    margin-top: 13px;
-    transition: all .3s ease-out;
-}
+
 .label-float input:focus+label,
 .label-float input:valid+label {
     font-size: 13px;
@@ -194,4 +185,26 @@ a:hover {
 #menu-h li a:hover {
     background-color: #0d009c;
     color: #fff;
+}
+
+.content{
+    margin-top: 15px;
+}
+
+table{
+    border-collapse: collapse;
+    border: 1px solid #ccc;
+    width: 100%;
+}
+
+table th{
+    background-color: rgb(214, 214, 214);
+}
+
+table td img{
+    width: 22px;
+}
+
+table tr{
+    text-align: center;
 }
