@@ -1,7 +1,7 @@
 const express = require ('express')
 const app = express()
 const path = require('path')
-const porta = 8082
+const porta = 8080
 
 
 app.get("/", function(req, res){
