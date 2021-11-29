@@ -5,7 +5,7 @@ const porta = 8082
 
 
 app.get("/", function(req, res){
-    res.sendFile(__dirname + "/src/index.html")
+    res.sendFile(__dirname + "/src/home.html")
 })
 
 app.get("/listaLancamento", function(req, res){
