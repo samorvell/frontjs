@@ -1,4 +1,4 @@
-let url = "http://localhost:8080/api/cadastrar-pf"
+let url = "http://localhost:4050/api/cadastrar-pf"
 
 let btn = document.querySelector('#verSenha')
 let btnConfirm = document.querySelector('#verConfirmSenha')
@@ -161,7 +161,7 @@ function fazPost(url, body) {
 }
 
 function regfunc() {
-    //let url = "http://localhost:8080/api/cadastrar-pj"
+    //let url = "http://localhost:4050/api/cadastrar-pj"
     event.preventDefault()
 
     let nome = document.getElementById("nome").value
