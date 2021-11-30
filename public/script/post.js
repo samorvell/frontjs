@@ -16,7 +16,7 @@ function fazPost(url, body){
 
 function autenticaUsuario(){
     event.preventDefault()
-    let url = "http://localhost:8080/auth"
+    let url = "http://localhost:4050/auth"
     let email = document.getElementById("email").value
     let senha = document.getElementById("senha").value
     
@@ -38,7 +38,7 @@ function autenticaUsuario(){
 
 function cadastraEmpresa(){
     event.preventDefault()
-let url = "http://localhost:8080/api/cadastrar-pj"
+let url = "http://localhost:4050/api/cadastrar-pj"
 let nome = document.getElementById("nome").value
 let email = document.getElementById("email").value
 let senha = document.getElementById("senha").value

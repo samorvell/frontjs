@@ -1,6 +1,6 @@
 let btn = document.querySelector('.fa-eye')
-let urlpj = 'http://192.168.100.14:8080/api/cadastrar-pj'
-let urllogin = "http://192.168.100.14:8080/auth"
+let urlpj = 'http://localhost:4050/api/cadastrar-pj'
+let urllogin = "http://localhost:4050/auth"
 
 
 let btn = document.querySelector('#senha')
