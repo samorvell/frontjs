@@ -243,6 +243,12 @@ table tr {
     text-align: center;
 }
 
+.div-select select:hover {
+    background-color:#272262 ;
+    color:#fff;
+    transition: all .4s ease-out;
+}
+
 .div-select {
     width: 250px;
     /* Tamanho final do select */
@@ -252,7 +258,7 @@ table tr {
 
 .div-select select {
     /* background: url(http://www.webcis.com.br/images/imagens-noticias/select/ico-seta-select.gif) no-repeat #354880;*/
-    background-color: transparent;
+    background-color: #fff;
     /* Imagem de fundo (Seta) */
     background-position: 205px center;
     /*Posição da imagem do background*/
