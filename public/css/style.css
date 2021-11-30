@@ -31,6 +31,15 @@ body {
 
 }
 
+.card-lancamento {
+    background-color: #ffffff80;
+    padding: 30px;
+    border-radius: 4%;
+    box-shadow: 3px 3px 1px 0px #00000060;
+    width: 700px;
+
+}
+
 h1 {
     text-align: center;
     margin-bottom: 20px;
@@ -52,11 +61,20 @@ h1 {
     border-radius: 0;
 }
 
-.label-float {
-    position: relative;
-    padding-top: 13px;
-    margin-top: 5%;
-    margin-bottom: 5%;
+
+
+.label-float1 input {
+    width: 100%;
+    padding: 5px 5px;
+    display: inline-block;
+    border: 0;
+    border-bottom: 2px solid #272262;
+    background-color: transparent;
+    outline: none;
+    min-width: 180px;
+    font-size: 16px;
+    transition: all .3s ease-out;
+    border-radius: 0;
 }
 
 .label-float1 {
@@ -66,9 +84,33 @@ h1 {
     margin-bottom: 5%;
 }
 
+.label-float1 input:focus {
+    border-bottom: 2px solid #4038a0;
+}
+
+.label-float1 label {
+    color: #272262;
+    /*pointer-events: none;*/
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-top: -10px;
+    transition: all .3s ease-out;
+}
+
+.label-float {
+    position: relative;
+    padding-top: 13px;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    color: #272262;
+}
+
 .label-float input:focus {
     border-bottom: 2px solid #4038a0;
 }
+
+
 
 .label-float label {
     color: #272262;
@@ -79,15 +121,7 @@ h1 {
     margin-top: 13px;
     transition: all .3s ease-out;
 }
-.label-float1 label {
-    color: #272262;
-    pointer-events: none;
-    position: absolute;
-    top: 0;
-    left: 0;
-    margin-top: 13px;
-    transition: all .3s ease-out;
-}
+
 
 .label-float input:focus+label,
 .label-float input:valid+label {
@@ -187,24 +221,67 @@ a:hover {
     color: #fff;
 }
 
-.content{
+.content {
     margin-top: 15px;
 }
 
-table{
+table {
     border-collapse: collapse;
     border: 1px solid #ccc;
     width: 100%;
 }
 
-table th{
+table th {
     background-color: rgb(214, 214, 214);
 }
 
-table td img{
+table td img {
     width: 22px;
 }
 
-table tr{
+table tr {
     text-align: center;
 }
+
+.div-select {
+    width: 250px;
+    /* Tamanho final do select */
+    overflow: hidden;
+    /* Esconde o conteúdo que passar do tamanho especificado */
+}
+
+.div-select select {
+    /* background: url(http://www.webcis.com.br/images/imagens-noticias/select/ico-seta-select.gif) no-repeat #354880;*/
+    background-color: transparent;
+    /* Imagem de fundo (Seta) */
+    background-position: 205px center;
+    /*Posição da imagem do background*/
+    width: 270px;
+    /* Tamanho do select, maior que o tamanho da div "div-select" */
+    height: 48px;
+    /* altura do select, importante para que tenha a mesma altura em todo os navegadores */
+    font-family: Arial, Helvetica, sans-serif;
+    /* Fonte do Select */
+    font-size: 18px;
+    /* Tamanho da Fonte */
+    padding: 13px 20px 13px 12px;
+    /* Configurações de padding para posicionar o texto no campo */
+    color: #272262;
+    /* Cor da Fonte */
+    text-indent: 0.01px;
+    /* Remove seta padrão do FireFox */
+    text-overflow: "";
+    border-bottom: 2px solid #272262;
+    border-top: 0;
+    border-left: 0;
+    outline: none;
+    /*border: 0;*/
+
+}
+
+/* Remove seta padrão do FireFox */
+.div-select select::-ms-expand {
+    display: none;
+}
+
+/* Remove seta padrão do IE*/

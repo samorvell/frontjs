@@ -6,15 +6,42 @@ function dataFixa() {
   var data = new Date(),
     day = data.getDate().toString().padStart(2, '0'),
     mouth = (data.getMonth() + 1).toString().padStart(2, '0'), //+1 pois no getMonth Janeiro começa com zero.
-    yer = data.getFullYear(),
+    year = data.getFullYear(),
     hour = data.getHours(),
     minute = data.getMinutes(),
     second = data.getSeconds();
-  fdata = day + '/' + mouth + '/' + yer + ' ' + hour + ':' + minute + ':' + second;
 
-  document.getElementById("data").value = fdata
+  if (second <= 9) {
+    second = "0" + second
+  } else {
+    second = second
+    minute = minute
+  }
+  if (minute <= 9) {
+    minute = "0" + minute
+  } else {
+    minute = minute
+  }
+  if (hour <= 9) {
+    hour = "0" + hour
+  } else {
+    hour = hour
+  }
+  if (day <= 9) {
+    day = "0" + day
+  } else {
+    day = day
+  }
+  if (minute <= 9) {
+    mouth = "0" + mouth
+  } else {
+    mouth = mouth
+  }
+  ftdate = year + '-' + mouth + '-' + day + " " + hour + ':' + minute + ':' + second
 
+  document.getElementById("data").value = ftdate
 }
+
 
 dataFixa()
 /*btn.addEventListener('click', () => {

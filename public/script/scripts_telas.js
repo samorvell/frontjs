@@ -158,18 +158,6 @@ function cadastrar() {
          msgSuccess.setAttribute('style', 'display: none')
          msgSuccess.innerHTML = ''
     }
-
-    // event.preventDefault()
-
-
-    //console.log(nome.value)
-    //console.log(email.value)
-    //console.log(senha.value)
-    //console.log(cpf.value)
-    //console.log(razaoSocial.value)
-    //console.log(cnpj.value)
-
-
 }
 
 
