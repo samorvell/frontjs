@@ -158,6 +158,8 @@ function cadastrar() {
          msgSuccess.setAttribute('style', 'display: none')
          msgSuccess.innerHTML = ''
     }
+
+
 }
 
 

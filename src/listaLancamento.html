@@ -13,7 +13,7 @@
                 <li><a href="home">Home</a></li>
                 <li><a href="sobre">Sobre</a></li>
                 <li><a href="aplicativo">Aplicativo</a></li>
-                
+
             </ul>
         </nav>
     </div>
@@ -21,6 +21,8 @@
     <div class='container'>
         <div class='card-lancamento'>
             <h1> Lançamento de ponto </h1>
+            <div id='msgError'></div>
+            <div id='msgSuccess'></div>
 
             <div class="label-float">
                 <input type="text" id="funcionarioId" placeholder=" " required>
@@ -33,7 +35,7 @@
             </div>
 
             <div class="label-float1">
-                <input readonly type="datetime" id="data" placeholder=" " value="Data"/>
+                <input readonly type="datetime" id="data" placeholder=" " value="Data" />
                 <label id="labelData" for="data">Data</label>
             </div>
 
@@ -52,7 +54,7 @@
                 </div>
 
                 <div class='justify-center'>
-                    <button onclick='cadastrar()'>Registrar</button>
+                    <button onclick='registerPoint()'>Registrar</button>
 
                 </div>
                 <div class="content">
@@ -66,15 +68,12 @@
                             <th>Termino trabalho</th>
                             <th>Ações</th>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>27/11/21</td>
-                                <td>Saída para almoço</td>
-                                <td>
-                                    <img src="img/edit.svg" alt="">
-                                    <img src="img/delete.svg" alt="">
-                                </td>
+                        <tbody id="tbody">
+
+
+                            <!--  <img src="img/edit.svg" alt="">
+                            <img src="img/delete.svg" alt=""> -->
+                            </td>
                             </tr>
                         </tbody>
                     </table>

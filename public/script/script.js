@@ -1,7 +1,7 @@
-let urllogin = "http://pinteligente.ddns.net:30100/auth"
-let btn = document.querySelector('.fa-eye')
-//let validToken = ''
+let urllanc = "http://192.168.100.14:4050/api/lancamentos"
 let data = new Date
+let msgError = document.querySelector('#msgError')
+let msgSuccess = document.querySelector('#msgSuccess')
 function dataFixa() {
   var data = new Date(),
     day = data.getDate().toString().padStart(2, '0'),
@@ -41,46 +41,36 @@ function dataFixa() {
 
   document.getElementById("data").value = ftdate
 }
-
-
 dataFixa()
-/*btn.addEventListener('click', () => {
-  let inputSenha = document.querySelector('#senha')
 
-  if (inputSenha.getAttribute('type') == 'password') {
-    inputSenha.setAttribute('type', 'text')
-  } else {
-    inputSenha.setAttribute('type', 'password')
-  }
-})
-
-function fazPost(urllogin, body) {
+function fazPost(urllanc, body) {
 
   console.log("Body=", body)
   let request = new XMLHttpRequest()
-  request.open("POST", urllogin, true)
+  request.open("POST", urllanc, true)
   request.setRequestHeader("Content-Type", "application/json")
   request.send(JSON.stringify(body))
 
 
 
   request.onload = function () {
-    let inputEmail = document.querySelector('#email')
-    let emailLabel = document.querySelector('#emailLabel')
-    let inputSenha = document.querySelector('#senha')
-    let senhaLabel = document.querySelector('#senhaLabel')
-    let validToken = null
+    let inputFuncionarioId = document.querySelector('#funcionarioId')
+    let labelFuncionarioId = document.querySelector('#labelFuncionarioId')
+    let inputDescricao = document.querySelector('#descricao')
+    let labelDescricao = document.querySelector('#labelDescricao')
+    let selectTipo = document.querySelector('#tipo')
 
     // console.log(this.responseText)
-    console.log(request.status)
+    //console.log(request.status)
     if (request.status == 401) {
-      emailLabel.setAttribute('style', 'color: red')
-      inputEmail.setAttribute('style', 'border-color: red')
-      senhaLabel.setAttribute('style', 'color: red')
-      inputSenha.setAttribute('style', 'border-color: red')
+      labelFuncionarioId.setAttribute('style', 'color: red')
+      inputFuncionarioId.setAttribute('style', 'border-color: red')
+      inputDescricao.setAttribute('style', 'color: red')
+      labelDescricao.setAttribute('style', 'border-color: red')
+      selectTipo.setAttribute('style', 'border-color: red')
       msgError.setAttribute('style', 'display: block')
-      msgError.innerHTML = 'Usuário ou senha incorreto'
-      inputEmail.focus()
+      msgError.innerHTML = 'Por favor informe os campos corretamente'
+      inputFuncionarioId.focus()
 
     } else {
 
@@ -89,17 +79,60 @@ function fazPost(urllogin, body) {
       validToken = (datatoken.data.token)
       localStorage.setItem('token', validToken)
       console.log(validToken)
-      //window.location.href = 'cadastroFuncionario'
+      reload()
     }
 
 
+  }
+}
+
+function registerPoint() {
+  let inputFuncionarioId = document.querySelector('#funcionarioId')
+  let labelFuncionarioId = document.querySelector('#labelFuncionarioId')
+  let inputDescricao = document.querySelector('#descricao')
+  let labelDescricao = document.querySelector('#labelDescricao')
+  let selectTipo = document.querySelector('#tipo')
+
+  event.preventDefault()
+
+  let funcionarioId = document.getElementById("funcionarioId").value
+  let descricao = document.getElementById("descricao").value
+  let data = document.getElementById("data").value
+  let tipo = document.getElementById("tipo").value
 
 
-    //if(request.status)
 
+  body = {
+    "data": data,
+    "tipo": tipo,
+    "descricao": descricao,
+    "funcionarioId": funcionarioId
   }
 
+  if (funcionarioId == '' || tipo == ''|| descricao == '') {
+    labelFuncionarioId.setAttribute('style', 'color: red')
+    inputFuncionarioId.setAttribute('style', 'border-color: red')
+    labelDescricao.setAttribute('style', 'color: red')
+    inputDescricao.setAttribute('style', 'border-color: red')
+    selectTipo.setAttribute('style', 'border-color: red')
+    msgError.setAttribute('style', 'display: block')
+    msgError.innerHTML = 'Por favor informe todos os campos corretamente'
+    inputFuncionarioId.focus()
+
+  } else {
+
+    fazPost(urllogin, body)
+  }
+
+  fazPost()
+}
+
+function listTable() {
+  let tbody = documet.getElementById('tbody')
+
+
+}
 
 
 
-  return request.status*/
+
