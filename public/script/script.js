@@ -1,4 +1,4 @@
-let url = "http://192.168.100.14:4050/api/lancamentos"
+let url = "http://pinteligente.ddns.net:30100/api/lancamentos"
 let data = new Date
 let pegatoken = localStorage.getItem('token')
 let msgError = document.querySelector('#msgError')
