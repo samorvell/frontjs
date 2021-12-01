@@ -6,6 +6,7 @@ const path = require('path')
 const porta = 8080
 
 app.use((req, res, next)=>{
+    res.header("Access-Control-Allow-Origin", "*")
     app.use(cors())
     next()
 })
