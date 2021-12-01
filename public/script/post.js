@@ -63,7 +63,7 @@ body ={
     "cnpj":cnpj    
 }
 
-fazPost(urlCadPj, body)
+fazPost(url, body)
 }
 
 

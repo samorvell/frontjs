@@ -143,6 +143,7 @@ function clear() {
 
 
 }
+
 function fazPost(url, body) {
     console.log("Body=", body)
     let request = new XMLHttpRequest()

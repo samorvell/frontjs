@@ -45,16 +45,12 @@ function dataFixa() {
 dataFixa()
 
 function fazPost(url, body) {
-  
-  //console.log(url)
-  //console.log("Body=", body)
-  
-  console.log(pegatoken)
+
+
   let request = new XMLHttpRequest()
   request.open("POST", url, true)
   request.setRequestHeader("Content-Type", "application/json")
   request.setRequestHeader("Authorization", "Bearer " + pegatoken)
-  
   request.send(JSON.stringify(body))
   
 
@@ -75,7 +71,7 @@ function fazPost(url, body) {
       labelDescricao.setAttribute('style', 'border-color: red')
       selectTipo.setAttribute('style', 'border-color: red')
       msgError.setAttribute('style', 'display: block')
-      msgError.innerHTML = 'Por favor informe os campos corretamente'
+      msgError.innerHTML = 'Por favor fazer login novamente'
       inputFuncionarioId.focus()
 
     } else {
@@ -83,8 +79,8 @@ function fazPost(url, body) {
       //let datatoken = JSON.parse(this.responseText)//JSON.parse para converter json para strint literal
       //console.log(tokenl)
       //validToken = (datatoken.data.token)
-     
-      clear()      
+
+      clear()
     }
 
 
@@ -114,7 +110,7 @@ function registerPoint() {
     "funcionarioId": funcionarioId
   }
 
-  if (funcionarioId == '' || tipo == ''|| descricao == '') {
+  if (funcionarioId == '' || tipo == '' || descricao == '') {
     labelFuncionarioId.setAttribute('style', 'color: red')
     inputFuncionarioId.setAttribute('style', 'border-color: red')
     labelDescricao.setAttribute('style', 'color: red')
@@ -129,13 +125,13 @@ function registerPoint() {
     fazPost(url, body)
   }
 
-  
+
 }
 
 function clear() {
   document.getElementById("funcionarioId").value = ''
   document.getElementById("descricao").value = ''
-  
+
 }
 
 function listTable() {
