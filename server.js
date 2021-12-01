@@ -1,8 +1,14 @@
 const express = require ('express')
+const cors = require('cors')
 const app = express()
 const path = require('path')
+
 const porta = 8080
 
+app.use((req, res, next)=>{
+    app.use(cors())
+    next()
+})
 
 app.get("/", function(req, res){
     res.sendFile(__dirname + "/src/home.html")

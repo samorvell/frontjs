@@ -1,4 +1,4 @@
-let urllanc = "http://192.168.100.14:4050/api/lancamentos"
+let url = "http://192.168.100.14:4050/api/lancamentos"
 let data = new Date
 let msgError = document.querySelector('#msgError')
 let msgSuccess = document.querySelector('#msgSuccess')
@@ -43,11 +43,12 @@ function dataFixa() {
 }
 dataFixa()
 
-function fazPost(urllanc, body) {
-
+function fazPost(url, body) {
+  
+  console.log(url)
   console.log("Body=", body)
   let request = new XMLHttpRequest()
-  request.open("POST", urllanc, true)
+  request.open("POST", url, true)
   request.setRequestHeader("Content-Type", "application/json")
   request.send(JSON.stringify(body))
 
@@ -74,12 +75,11 @@ function fazPost(urllanc, body) {
 
     } else {
 
-      let datatoken = JSON.parse(this.responseText)//JSON.parse para converter json para strint literal
+      //let datatoken = JSON.parse(this.responseText)//JSON.parse para converter json para strint literal
       //console.log(tokenl)
-      validToken = (datatoken.data.token)
+      //validToken = (datatoken.data.token)
       localStorage.setItem('token', validToken)
-      console.log(validToken)
-      reload()
+      clear()      
     }
 
 
@@ -121,10 +121,16 @@ function registerPoint() {
 
   } else {
 
-    fazPost(urllogin, body)
+    fazPost(url, body)
   }
 
-  fazPost()
+  
+}
+
+function clear() {
+  document.getElementById("funcionarioId").value = ''
+  document.getElementById("descricao").value = ''
+  
 }
 
 function listTable() {
