@@ -1,5 +1,6 @@
 let url = "http://192.168.100.14:4050/api/lancamentos"
 let data = new Date
+let pegatoken = localStorage.getItem('token')
 let msgError = document.querySelector('#msgError')
 let msgSuccess = document.querySelector('#msgSuccess')
 function dataFixa() {
@@ -45,13 +46,17 @@ dataFixa()
 
 function fazPost(url, body) {
   
-  console.log(url)
-  console.log("Body=", body)
+  //console.log(url)
+  //console.log("Body=", body)
+  
+  console.log(pegatoken)
   let request = new XMLHttpRequest()
   request.open("POST", url, true)
   request.setRequestHeader("Content-Type", "application/json")
+  request.setRequestHeader("Authorization", "Bearer " + pegatoken)
+  
   request.send(JSON.stringify(body))
-
+  
 
 
   request.onload = function () {
@@ -78,7 +83,7 @@ function fazPost(url, body) {
       //let datatoken = JSON.parse(this.responseText)//JSON.parse para converter json para strint literal
       //console.log(tokenl)
       //validToken = (datatoken.data.token)
-      localStorage.setItem('token', validToken)
+     
       clear()      
     }
 
