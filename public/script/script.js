@@ -52,7 +52,7 @@ function fazPost(url, body) {
   request.setRequestHeader("Content-Type", "application/json")
   request.setRequestHeader("Authorization", "Bearer " + pegatoken)
   request.send(JSON.stringify(body))
-  
+
 
 
   request.onload = function () {
@@ -81,6 +81,7 @@ function fazPost(url, body) {
       //validToken = (datatoken.data.token)
 
       clear()
+      searchPoint()
     }
 
 
@@ -134,9 +135,65 @@ function clear() {
 
 }
 
-function listTable() {
-  let tbody = documet.getElementById('tbody')
+function fazGet(urlb, body) {
 
+
+  let request = new XMLHttpRequest()
+  request.open("GET", urlb, true)
+  request.setRequestHeader("Content-Type", "application/json")
+  request.setRequestHeader("Authorization", "Bearer " + pegatoken)
+  //request.responseType = "json"
+  request.send()
+
+  request.onload = function () {
+
+    let emplan = request.response //variavel recebendo o response
+    let nemplan = JSON.parse(request.response)//convertendo para json
+    let tam2 = emplan.length
+    //let tam = nemplan.length
+    console.log(nemplan)
+    console.log(nemplan.data.content[10].data)
+    console.log(nemplan.data.totalElements)
+    // console.log(tam2 + ' tamanho da variavel tam2 referenet a emplan')
+    //console.log(tam)
+    //console.log(nemplan.length)
+
+    let tbody = document.getElementById('tbody')
+    for (let i = 0; i < nemplan.data.totalElements; i++) {
+      let tr = tbody.insertRow()
+
+      let td_id = tr.insertCell()
+      let td_data = tr.insertCell()
+      let td_tipo = tr.insertCell()
+      /*let td_INICIO_ALMOCO = tr.insertCell()
+      let td_TERMINO_ALMOCO = tr.insertCell()
+      let td_TERMINO_TRABALHO = tr.insertCell()*/
+      let td_acoes = tr.insertCell()
+
+      td_id.innerText = nemplan.data.content[i].id
+      td_data.innerText = nemplan.data.content[i].data
+      td_tipo.innerText = nemplan.data.content[i].tipo
+      /*td_INICIO_ALMOCO.innerText = nemplan.data.content[i].tipo
+      td_TERMINO_ALMOCO.innerText = nemplan.data.content[i].tipo
+      td_TERMINO_TRABALHO.innerText = nemplan.data.content[i].tipo*/
+      td_acoes.innerText = emplan[i].acoes
+      td_id.classList.add('center')
+
+    }
+
+    return emplan
+
+  }
+  //console.log(empla)
+
+}
+
+function searchPoint() {
+  let fid = document.getElementById("funcionarioId").value
+  let urlb = "http://pinteligente.ddns.net:30100/api/lancamentos/funcionario/" + fid
+  body = {}
+
+  fazGet(urlb, body)
 
 }
 

@@ -13,7 +13,7 @@ btn.addEventListener('click', () => {
 
 function fazPost(urllogin, body) {
 
-  console.log("Body=", body)
+  //console.log("Body=", body)
   let request = new XMLHttpRequest()
   request.open("POST", urllogin, true)
   request.setRequestHeader("Content-Type", "application/json")
@@ -29,7 +29,7 @@ function fazPost(urllogin, body) {
     let validToken = null
 
     // console.log(this.responseText)
-    console.log(request.status)
+    //console.log(request.status)
     if (request.status == 401) {
       emailLabel.setAttribute('style', 'color: red')
       inputEmail.setAttribute('style', 'border-color: red')
@@ -45,7 +45,7 @@ function fazPost(urllogin, body) {
       //console.log(tokenl)
       validToken = (datatoken.data.token)
       localStorage.setItem('token', validToken)
-      console.log(validToken)
+//      console.log(validToken)
       window.location.href = 'cadastroFuncionario'
     }
 
