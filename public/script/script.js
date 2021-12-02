@@ -1,4 +1,6 @@
 let url = "http://pinteligente.ddns.net:30100/api/lancamentos"
+
+
 let data = new Date
 let pegatoken = localStorage.getItem('token')
 let msgError = document.querySelector('#msgError')
@@ -80,12 +82,14 @@ function fazPost(url, body) {
       //console.log(tokenl)
       //validToken = (datatoken.data.token)
 
-      clear()
-      searchPoint()
+      //clear()
+     // searchPoint()
     }
 
-
+    searchPoint()
+    clear()
   }
+  
 }
 
 function registerPoint() {
@@ -181,7 +185,7 @@ function fazGet(urlb, body) {
 
     }
 
-    return emplan
+
 
   }
   //console.log(empla)
