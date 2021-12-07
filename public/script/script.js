@@ -157,17 +157,8 @@ function fazGet(urlb, body) {
   request.onload = function () {
 
     let emplan = request.response //variavel recebendo o response
-    let nemplan = JSON.parse(request.response)//convertendo para json    
-    let tam = nemplan.length
-    console.log(nemplan)
-    let tempo = ' '//nemplan.data.content[0].data.substring(11, 19)
-    let td_data = ' ' //
-    let tplanc = nemplan.data.content.tipo
-
-
-    console.log(nemplan.data.content[0].data)
-    console.log(nemplan.data.content[0].tipo)
-    console.log(nemplan.data.totalElements)
+    let nemplan = JSON.parse(request.response)//convertendo para json      
+    
     let tbody = document.getElementById('tbody')
     data = ' '//nemplan.data.content[0].data.substring(0, 11)
     //console.log(data)
