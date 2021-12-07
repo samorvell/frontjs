@@ -1,4 +1,6 @@
-let url = "http://localhost:4050/api/cadastrar-pf"
+let url = "http://pinteligente.ddns.net:30100/api/cadastrar-pf"
+
+let pegatoken = localStorage.getItem('token')
 
 let btn = document.querySelector('#verSenha')
 let btnConfirm = document.querySelector('#verConfirmSenha')
@@ -149,6 +151,7 @@ function fazPost(url, body) {
     let request = new XMLHttpRequest()
     request.open("POST", url, true)
     request.setRequestHeader("Content-Type", "application/json")
+    request.setRequestHeader("Authorization", "Bearer " + pegatoken)
     request.send(JSON.stringify(body))
 
 
@@ -189,11 +192,11 @@ function regfunc() {
 
         msgSuccess.setAttribute('style', 'display: block')
         msgSuccess.innerHTML = '<strong>Funcionario Cadastrado...</strong>'
-        msgError.setAttribute('style', 'di</form>splay: none')
+        msgError.setAttribute('style', 'display: none')
         msgError.innerHTML = ''
 
         setTimeout(() => {
-            // window.location.href = 'login'
+             window.location.href = 'listaLancamento'
         }, 3000)
 
         fazPost(url, body)

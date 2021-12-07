@@ -36,7 +36,7 @@ body {
     padding: 30px;
     border-radius: 4%;
     box-shadow: 3px 3px 1px 0px #00000060;
-    width: 600px;
+    width: 800px;
 
 }
 
@@ -193,6 +193,15 @@ a:hover {
     color: #272262;
 }
 
+#msgSuccess{
+    text-align: center;
+    color: #00bb00;
+    background-color: #bbffbe;
+    padding: 10px;
+    border-radius: 4px;
+    display: none;
+  }
+
 #msgError {
     text-align: center;
     color: #ff0000;
@@ -220,7 +229,7 @@ a:hover {
     display: inline-block;
     color: #272262;
     text-decoration: none;
-    transition: background 3.s;
+    transition: background ease-out 3.s;
 }
 
 
@@ -235,12 +244,13 @@ a:hover {
 
 table {
     border-collapse: collapse;
-    border: 1px solid #ccc;
+    border: 1px solid #272262;
     width: 100%;
 }
 
 table th {
-    background-color: rgb(214, 214, 214);
+    background-color: #e6e6e9;
+    color:#272262;
 }
 
 table td img {

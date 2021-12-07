@@ -1,4 +1,4 @@
-let url = "http://localhost:4050/api/cadastrar-pj"
+let url = "http://pinteligente.ddns.net:30100/api/cadastrar-pj"
 
 let btn = document.querySelector('#verSenha')
 let btnConfirm = document.querySelector('#verConfirmSenha')

@@ -1,18 +1,22 @@
+//const { json } = require("stream/consumers");
+
 let url = "http://pinteligente.ddns.net:30100/api/lancamentos"
 
 
-let data = new Date
+//let data = new Date
 let pegatoken = localStorage.getItem('token')
 let msgError = document.querySelector('#msgError')
 let msgSuccess = document.querySelector('#msgSuccess')
 function dataFixa() {
-  var data = new Date(),
+  let data = new Date(),
     day = data.getDate().toString().padStart(2, '0'),
     mouth = (data.getMonth() + 1).toString().padStart(2, '0'), //+1 pois no getMonth Janeiro começa com zero.
     year = data.getFullYear(),
     hour = data.getHours(),
     minute = data.getMinutes(),
     second = data.getSeconds();
+
+
 
   if (second <= 9) {
     second = "0" + second
@@ -30,11 +34,11 @@ function dataFixa() {
   } else {
     hour = hour
   }
-  if (day <= 9) {
+  /*if (day <= 9) {
     day = "0" + day
   } else {
     day = day
-  }
+  }*/
   if (minute <= 9) {
     mouth = "0" + mouth
   } else {
@@ -83,13 +87,13 @@ function fazPost(url, body) {
       //validToken = (datatoken.data.token)
 
       //clear()
-     // searchPoint()
+      // searchPoint()
     }
 
     searchPoint()
     clear()
   }
-  
+
 }
 
 function registerPoint() {
@@ -149,46 +153,51 @@ function fazGet(urlb, body) {
   //request.responseType = "json"
   request.send()
 
+  //ler o json, converter os dados para criar a primeira linha, preencher, depois fazer isso com as demais linhas
   request.onload = function () {
 
     let emplan = request.response //variavel recebendo o response
-    let nemplan = JSON.parse(request.response)//convertendo para json
-    let tam2 = emplan.length
-    //let tam = nemplan.length
+    let nemplan = JSON.parse(request.response)//convertendo para json    
+    let tam = nemplan.length
     console.log(nemplan)
-    console.log(nemplan.data.content[10].data)
+    let tempo = ' '//nemplan.data.content[0].data.substring(11, 19)
+    let td_data = ' ' //
+    let tplanc = nemplan.data.content.tipo
+
+
+    console.log(nemplan.data.content[0].data)
+    console.log(nemplan.data.content[0].tipo)
     console.log(nemplan.data.totalElements)
-    // console.log(tam2 + ' tamanho da variavel tam2 referenet a emplan')
-    //console.log(tam)
-    //console.log(nemplan.length)
-
     let tbody = document.getElementById('tbody')
+    data = ' '//nemplan.data.content[0].data.substring(0, 11)
+    //console.log(data)
+
     for (let i = 0; i < nemplan.data.totalElements; i++) {
+
       let tr = tbody.insertRow()
-
-      let td_id = tr.insertCell()
       let td_data = tr.insertCell()
+      let td_hora = tr.insertCell()
       let td_tipo = tr.insertCell()
-      /*let td_INICIO_ALMOCO = tr.insertCell()
-      let td_TERMINO_ALMOCO = tr.insertCell()
-      let td_TERMINO_TRABALHO = tr.insertCell()*/
+      //let td_id = tr.insertCell()
       let td_acoes = tr.insertCell()
-
-      td_id.innerText = nemplan.data.content[i].id
-      td_data.innerText = nemplan.data.content[i].data
-      td_tipo.innerText = nemplan.data.content[i].tipo
-      /*td_INICIO_ALMOCO.innerText = nemplan.data.content[i].tipo
-      td_TERMINO_ALMOCO.innerText = nemplan.data.content[i].tipo
-      td_TERMINO_TRABALHO.innerText = nemplan.data.content[i].tipo*/
+      let data = nemplan.data.content[i].data.substring(0, 11)
+      let hora = nemplan.data.content[i].data.substring(11, 19)
+      let tipo = nemplan.data.content[i].tipo
+      //  td_id.innerText = id
+      td_data.innerText = data
+      td_hora.innerText = hora
+      td_tipo.innerText = tipo
+      //td_acoes.innerText = ''
+      //td_entrada.innerText = hora //nemplan.data.content[i].data.substring(11,19)//hora
       td_acoes.innerText = emplan[i].acoes
-      td_id.classList.add('center')
+
 
     }
 
 
 
   }
-  //console.log(empla)
+
 
 }
 
