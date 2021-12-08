@@ -1,5 +1,6 @@
 let url = "http://pinteligente.ddns.net:30100/api/lancamentos"
-
+let nome = document.querySelector('#nome')
+let labelNome = document.querySelector('#labelNome')
 //let data = new Date
 let pegatoken = localStorage.getItem('token')
 let msgError = document.querySelector('#msgError')
@@ -93,6 +94,8 @@ function fazPost(url, body) {
 
 }
 
+let validFuncionarioId = false
+
 function registerPoint() {
   let inputFuncionarioId = document.querySelector('#funcionarioId')
   let labelFuncionarioId = document.querySelector('#labelFuncionarioId')
@@ -117,6 +120,7 @@ function registerPoint() {
   }
 
   if (funcionarioId == '' || tipo == '' || descricao == '') {
+    validFuncionarioId = false
     labelFuncionarioId.setAttribute('style', 'color: red')
     inputFuncionarioId.setAttribute('style', 'border-color: red')
     labelDescricao.setAttribute('style', 'color: red')
@@ -128,9 +132,10 @@ function registerPoint() {
     setTimeout(() => {
       // window.location.href = 'login'
       msgError.setAttribute('style', 'display: none')
-   }, 3000)
+    }, 3000)
 
   } else {
+    validFuncionarioId = true
 
     fazPost(url, body)
   }
@@ -182,7 +187,7 @@ function fazGet(urlb, body) {
       td_tipo.innerText = tipo
       //td_acoes.innerText = ''
       //td_entrada.innerText = hora //nemplan.data.content[i].data.substring(11,19)//hora
-     // td_acoes.innerText = emplan[i].acoes
+      // td_acoes.innerText = emplan[i].acoes
 
 
     }
@@ -198,7 +203,7 @@ function searchPoint() {
   let fid = document.getElementById("funcionarioId").value
   let urlb = "http://pinteligente.ddns.net:30100/api/lancamentos/funcionario/" + fid
   body = {}
-  if (fid == '') {    
+  if (fid == '' && urlb == 'http://pinteligente.ddns.net:30100/api/lancamentos/funcionario/') {
 
     msgError.setAttribute('style', 'display: block')
     msgError.innerHTML = '<strong>Informe Id do funcionario</strong>'
@@ -207,24 +212,21 @@ function searchPoint() {
     setTimeout(() => {
       // window.location.href = 'login'
       msgError.setAttribute('style', 'display: none')
-   }, 3000)
+    }, 3000)
 
   } else {
+
     msgSuccess.setAttribute('style', 'display: block')
     msgSuccess.innerHTML = '<strong>Buscando lançamento...</strong>'
     msgError.setAttribute('style', 'display: none')
     msgError.innerHTML = ''
     setTimeout(() => {
-     // window.location.href = 'login'
-     msgSuccess.setAttribute('style', 'display: none')
-  }, 3000)
-  
-    
+      // window.location.href = 'login'
+      msgSuccess.setAttribute('style', 'display: none')
+    }, 3000)
+
+    fazGet(urlb, body)
   }
-
-  fazGet(urlb, body)
-  
-
 }
 
 
