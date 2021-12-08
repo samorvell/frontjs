@@ -178,21 +178,7 @@ function cadastraEmpresa() {
     }
 
     if (validNome && validRazaoSocial &&
-        validSenha && validConfirmSenha && validCnpj /*&&
-        validEmail*/) {
-            //window.alert("deu bom");
-        //let listaUser = JSON.parse(localStorage.getItem('listaUser') || '[]')
-
-        /* listaUser.push(
-             {
-                 nomeCad: nome.value,
-                 userCad: usuario.value,
-                 senhaCad: senha.value
-             }
-         )*/
-
-        //localStorage.setItem('listaUser', JSON.stringify(listaUser))
-
+        validSenha && validConfirmSenha && validCnpj ) {       
 
         msgSuccess.setAttribute('style', 'display: block')
         msgSuccess.innerHTML = '<strong>Cadastrando empresa...</strong>'
@@ -211,6 +197,10 @@ function cadastraEmpresa() {
         msgError.innerHTML = '<strong>Preencha todos os campos corretamente antes de cadastrar</strong>'
         msgSuccess.innerHTML = ''
         msgSuccess.setAttribute('style', 'display: none')
+        setTimeout(() => {
+            // window.location.href = 'login'
+            msgError.setAttribute('style', 'display: none')
+         }, 3000)
     }
 
 

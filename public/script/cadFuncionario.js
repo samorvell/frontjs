@@ -197,7 +197,7 @@ function regfunc() {
 
         setTimeout(() => {
              window.location.href = 'listaLancamento'
-        }, 3000)
+        }, 4000)
 
         fazPost(url, body)
 
@@ -207,6 +207,10 @@ function regfunc() {
         msgError.innerHTML = '<strong>Preencha todos os campos corretamente antes de cadastrar</strong>'
         msgSuccess.innerHTML = ''
         msgSuccess.setAttribute('style', 'display: none')
+        setTimeout(() => {
+            // window.location.href = 'login'
+            msgError.setAttribute('style', 'display: none')
+         }, 3000)
     }
 
 
