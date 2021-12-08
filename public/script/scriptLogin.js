@@ -36,7 +36,7 @@ function fazPost(urllogin, body) {
       senhaLabel.setAttribute('style', 'color: red')
       inputSenha.setAttribute('style', 'border-color: red')
       msgError.setAttribute('style', 'display: block')
-      msgError.innerHTML = 'Usuário ou senha incorreto'
+      msgError.innerHTML = 'Usuário ou senha incorretos'
       inputEmail.focus()
 
     } else {
@@ -89,7 +89,7 @@ function autenticaUsuario() {
     senhaLabel.setAttribute('style', 'color: red')
     inputSenha.setAttribute('style', 'border-color: red')
     msgError.setAttribute('style', 'display: block')
-    msgError.innerHTML = 'Usuário ou senha incorreto'
+    msgError.innerHTML = 'Usuário ou senha incorretos'
     inputEmail.focus()
 
   } else {

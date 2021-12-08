@@ -36,7 +36,7 @@ body {
     padding: 30px;
     border-radius: 4%;
     box-shadow: 3px 3px 1px 0px #00000060;
-    width: 800px;
+    width: 600px;
 
 }
 
@@ -246,6 +246,7 @@ table {
     border-collapse: collapse;
     border: 1px solid #272262;
     width: 100%;
+    color: #272262;
 }
 
 table th {
@@ -253,12 +254,14 @@ table th {
     color:#272262;
 }
 
-table td img {
-    width: 22px;
+table th, td {
+    padding: 1px 5px;
+    text-align: left;
 }
 
-table tr {
-    text-align: center;
+table td img {
+    width: 19px;
+    margin-left: 4px;
 }
 
 .div-select select:hover {

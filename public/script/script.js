@@ -177,7 +177,7 @@ function fazGet(urlb, body) {
       let td_hora = tr.insertCell()
       let td_tipo = tr.insertCell()
       //let td_id = tr.insertCell()
-      //let td_acoes = tr.insertCell()
+      let td_acoes = tr.insertCell()
       let data = nemplan.data.content[i].data.substring(0, 11)
       let hora = nemplan.data.content[i].data.substring(11, 19)
       let tipo = nemplan.data.content[i].tipo
@@ -187,7 +187,13 @@ function fazGet(urlb, body) {
       td_tipo.innerText = tipo
       //td_acoes.innerText = ''
       //td_entrada.innerText = hora //nemplan.data.content[i].data.substring(11,19)//hora
-      // td_acoes.innerText = emplan[i].acoes
+     // td_acoes.innerText = emplan[i].acoes
+      let imgEdit = document.createElement('img')
+      let imgDelet = document.createElement('img')
+      imgEdit.src = 'img/editar.svg'
+      imgDelet.src = 'img/excluir.svg'
+      td_acoes.appendChild(imgEdit)
+      td_acoes.appendChild(imgDelet)
 
 
     }
