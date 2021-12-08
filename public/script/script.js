@@ -14,8 +14,6 @@ function dataFixa() {
     minute = data.getMinutes(),
     second = data.getSeconds();
 
-
-
   if (second <= 9) {
     second = "0" + second
   } else {
@@ -192,6 +190,7 @@ function fazGet(urlb, body) {
       let imgDelet = document.createElement('img')
       imgEdit.src = 'img/editar.svg'
       imgDelet.src = 'img/excluir.svg'
+      imgDelet.setAttribute("onclick","remover")
       td_acoes.appendChild(imgEdit)
       td_acoes.appendChild(imgDelet)
 

@@ -140,8 +140,6 @@ function fazPost(url, body) {
     request.setRequestHeader("Content-Type", "application/json")
     request.send(JSON.stringify(body))
 
-
-
     request.onload = function () {
         console.log(this.responseText)
     }
@@ -159,13 +157,6 @@ function cadastraEmpresa() {
     let cpf = document.getElementById("cpf").value
     let razaoSocial = document.getElementById("razaoSocial").value
     let cnpj = document.getElementById("cnpj").value
-
-   /* console.log(nome)
-    console.log(email)
-    console.log(senha)
-    console.log(cpf)
-    console.log(razaoSocial)
-    console.log(cnpj)*/
 
     body = {
 
@@ -203,13 +194,7 @@ function cadastraEmpresa() {
          }, 3000)
     }
 
-
-   
 }
-
-
-
-
 
 btn.addEventListener('click', () => {
     let inputSenha = document.querySelector('#senha')
@@ -230,8 +215,3 @@ btnConfirm.addEventListener('click', () => {
         inputConfirmSenha.setAttribute('type', 'password')
     }
 })
-
-
-
-
-

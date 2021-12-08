@@ -217,9 +217,6 @@ function regfunc() {
 
 }
 
-
-
-
 btn.addEventListener('click', () => {
     let inputSenha = document.querySelector('#senha')
 
@@ -239,8 +236,3 @@ btnConfirm.addEventListener('click', () => {
         inputConfirmSenha.setAttribute('type', 'password')
     }
 })
-
-
-
-
-
