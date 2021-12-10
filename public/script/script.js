@@ -78,6 +78,8 @@ function fazPost(url, body) {
 
     } else {
 
+      
+
       //let datatoken = JSON.parse(this.responseText)//JSON.parse para converter json para strint literal
       //console.log(tokenl)
       //validToken = (datatoken.data.token)
@@ -87,12 +89,10 @@ function fazPost(url, body) {
     }
 
     searchPoint()
-    clear()
+   // clear()
   }
 
 }
-
-let validFuncionarioId = false
 
 function registerPoint() {
   let inputFuncionarioId = document.querySelector('#funcionarioId')
@@ -133,12 +133,16 @@ function registerPoint() {
     }, 3000)
 
   } else {
-    validFuncionarioId = true
-
-    fazPost(url, body)
+    msgSuccess.setAttribute('style', 'display: block')
+    msgSuccess.innerHTML = '<strong>Atualizando lançamentos...</strong>'
+    msgError.setAttribute('style', 'display: none')
+    msgError.innerHTML = ''
+    setTimeout(() => {
+      // window.location.href = 'login'
+      msgSuccess.setAttribute('style', 'display: none')
+      fazPost(url, body)
+    }, 3000)    
   }
-
-
 }
 
 function clear() {
@@ -165,19 +169,17 @@ function fazGet(urlb, body) {
       msgError.setAttribute('style', 'display: block')
       msgError.innerHTML = 'Por favor efetuar login novamente!'
       funcionarioId.focus()
+      setTimeout(() => {
+        // window.location.href = 'login'
+        msgError.setAttribute('style', 'display: none')
+      }, 3000)
 
     } else {
-      //ler o json, converter os dados para criar a primeira linha, preencher, depois fazer isso com as demais linhas
-
-
-      //let emplan = request.response //variavel recebendo o response
-      //console.log(emplan)
       let nemplan = JSON.parse(request.response)//convertendo para json      
 
       let tbody = document.getElementById('tbody')
       tbody.innerText = ' '
       data = ' '//nemplan.data.content[0].data.substring(0, 11)
-      //console.log(data)
 
       for (let i = 0; i < nemplan.data.totalElements; i++) {
 
@@ -223,34 +225,33 @@ function remover(id) {
   fazdelete(durl, body)
 
   function fazdelete(durl) {
-
-
     let request = new XMLHttpRequest()
     request.open("DELETE", durl, true)
     request.setRequestHeader("Content-Type", "application/json")
     request.setRequestHeader("Authorization", "Bearer " + pegatoken)
-    request.send()   
-    
+    request.send()
+
     msgSuccess.setAttribute('style', 'display: block')
-    msgSuccess.innerHTML = '<strong>Removendo lançamento'+id+'...</strong>'
+    msgSuccess.innerHTML = '<strong>Removendo lançamento' + id + '...</strong>'
     msgError.setAttribute('style', 'display: none')
     msgError.innerHTML = ''
     setTimeout(() => {
       // window.location.href = 'login'
       msgSuccess.setAttribute('style', 'display: none')
-    }, 4000)
-    
-   // clear()
+      searchPoint(id)
+    }, 2000)
+
+    // clear()
   }
 
-  searchPoint()
+//  searchPoint()
   //window.alert("deletar " + id)
 
 }
 
 function searchPoint() {
-  let fid = document.getElementById("funcionarioId").value
-  let urlb = "http://pinteligente.ddns.net:30100/api/lancamentos/funcionario/" + fid
+  let id = document.getElementById("funcionarioId").value
+  let urlb = "http://pinteligente.ddns.net:30100/api/lancamentos/funcionario/" + id
   body = {}
   if (urlb == 'http://pinteligente.ddns.net:30100/api/lancamentos/funcionario/') {
 
@@ -272,9 +273,10 @@ function searchPoint() {
     setTimeout(() => {
       // window.location.href = 'login'
       msgSuccess.setAttribute('style', 'display: none')
-    }, 3000)
+      fazGet(urlb, body)
+    }, 2000)
 
-    fazGet(urlb, body)
+    //
   }
 
 
