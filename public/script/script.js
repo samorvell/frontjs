@@ -155,52 +155,91 @@ function fazGet(urlb, body) {
   request.setRequestHeader("Content-Type", "application/json")
   request.setRequestHeader("Authorization", "Bearer " + pegatoken)
   //request.responseType = "json"
+  // let emplan = request.response //variavel recebendo o response
+  // console.log(emplan)
   request.send()
-
-  //ler o json, converter os dados para criar a primeira linha, preencher, depois fazer isso com as demais linhas
   request.onload = function () {
+    if (request.status == 401) {
+      // labelFuncionarioId.setAttribute('style', 'color: red')
+      funcionarioId.setAttribute('style', 'border-color: red')
+      msgError.setAttribute('style', 'display: block')
+      msgError.innerHTML = 'Por favor efetuar login novamente!'
+      funcionarioId.focus()
 
-    let emplan = request.response //variavel recebendo o response
-    let nemplan = JSON.parse(request.response)//convertendo para json      
-
-    let tbody = document.getElementById('tbody')
-    tbody.innerText = ' '
-    data = ' '//nemplan.data.content[0].data.substring(0, 11)
-    //console.log(data)
-
-    for (let i = 0; i < nemplan.data.totalElements; i++) {
-
-      let tr = tbody.insertRow()
-      let td_data = tr.insertCell()
-      let td_hora = tr.insertCell()
-      let td_tipo = tr.insertCell()
-      //let td_id = tr.insertCell()
-      let td_acoes = tr.insertCell()
-      let data = nemplan.data.content[i].data.substring(0, 11)
-      let hora = nemplan.data.content[i].data.substring(11, 19)
-      let tipo = nemplan.data.content[i].tipo
-      //  td_id.innerText = id
-      td_data.innerText = data
-      td_hora.innerText = hora
-      td_tipo.innerText = tipo
-      //td_acoes.innerText = ''
-      //td_entrada.innerText = hora //nemplan.data.content[i].data.substring(11,19)//hora
-     // td_acoes.innerText = emplan[i].acoes
-      let imgEdit = document.createElement('img')
-      let imgDelet = document.createElement('img')
-      imgEdit.src = 'img/editar.svg'
-      imgDelet.src = 'img/excluir.svg'
-      imgDelet.setAttribute("onclick","remover")
-      td_acoes.appendChild(imgEdit)
-      td_acoes.appendChild(imgDelet)
+    } else {
+      //ler o json, converter os dados para criar a primeira linha, preencher, depois fazer isso com as demais linhas
 
 
+      let emplan = request.response //variavel recebendo o response
+      //console.log(emplan)
+      let nemplan = JSON.parse(request.response)//convertendo para json      
+
+      let tbody = document.getElementById('tbody')
+      tbody.innerText = ' '
+      data = ' '//nemplan.data.content[0].data.substring(0, 11)
+      //console.log(data)
+
+      for (let i = 0; i < nemplan.data.totalElements; i++) {
+
+        let tr = tbody.insertRow()
+        let td_data = tr.insertCell()
+        let td_hora = tr.insertCell()
+        let td_tipo = tr.insertCell()
+        //let td_id = tr.insertCell()
+        let td_acoes = tr.insertCell()
+        let data = nemplan.data.content[i].data.substring(0, 11)
+        let hora = nemplan.data.content[i].data.substring(11, 19)
+        let tipo = nemplan.data.content[i].tipo
+        let id = nemplan.data.content[i].id
+        //  td_id.innerText = id
+        td_data.innerText = data
+        td_hora.innerText = hora
+        td_tipo.innerText = tipo
+        //td_acoes.innerText = ''
+        //td_entrada.innerText = hora //nemplan.data.content[i].data.substring(11,19)//hora
+        // td_acoes.innerText = emplan[i].acoes
+        let imgEdit = document.createElement('img')
+        let imgDelet = document.createElement('img')
+        imgEdit.src = 'img/editar.svg'
+        imgDelet.src = 'img/excluir.svg'
+        imgDelet.setAttribute("onclick", "remover(" + id + ")")
+        td_acoes.appendChild(imgEdit)
+        td_acoes.appendChild(imgDelet)
+
+
+      }
     }
+  }
+}
 
 
 
+function remover(id) {
+
+  let durl = 'http://pinteligente.ddns.net:30100/api/lancamentos/' + id
+  console.log(durl)
+
+  body = ''
+  fazdelete(durl, body)
+
+  function fazdelete(durl) {
+
+
+    let request = new XMLHttpRequest()
+    request.open("DELETE", durl, true)
+    request.setRequestHeader("Content-Type", "application/json")
+    request.setRequestHeader("Authorization", "Bearer " + pegatoken)
+
+    setTimeout(() => {
+      // window.location.href = 'login'
+     
+    }, 3000)
+    searchPoint()
+    clear()
   }
 
+
+  //window.alert("deletar " + id)
 
 }
 
@@ -208,7 +247,7 @@ function searchPoint() {
   let fid = document.getElementById("funcionarioId").value
   let urlb = "http://pinteligente.ddns.net:30100/api/lancamentos/funcionario/" + fid
   body = {}
-  if (fid == '' && urlb == 'http://pinteligente.ddns.net:30100/api/lancamentos/funcionario/') {
+  if (urlb == 'http://pinteligente.ddns.net:30100/api/lancamentos/funcionario/') {
 
     msgError.setAttribute('style', 'display: block')
     msgError.innerHTML = '<strong>Informe Id do funcionario</strong>'
@@ -232,6 +271,8 @@ function searchPoint() {
 
     fazGet(urlb, body)
   }
+
+
 }
 
 

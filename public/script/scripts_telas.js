@@ -162,10 +162,6 @@ function cadastrar() {
 
 }
 
-
-
-
-
 btn.addEventListener('click', () => {
     let Senha = document.querySelector('#senha')
 
@@ -175,8 +171,6 @@ btn.addEventListener('click', () => {
         Senha.setAttribute('type', 'password')
     }
 })
-
-
 
 btnConfirm.addEventListener('click', () => {
     let confirmSenha = document.querySelector('#confirmSenha')
