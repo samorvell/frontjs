@@ -170,7 +170,7 @@ function fazGet(urlb, body) {
       //ler o json, converter os dados para criar a primeira linha, preencher, depois fazer isso com as demais linhas
 
 
-      let emplan = request.response //variavel recebendo o response
+      //let emplan = request.response //variavel recebendo o response
       //console.log(emplan)
       let nemplan = JSON.parse(request.response)//convertendo para json      
 
@@ -217,7 +217,7 @@ function fazGet(urlb, body) {
 function remover(id) {
 
   let durl = 'http://pinteligente.ddns.net:30100/api/lancamentos/' + id
-  console.log(durl)
+  //.log(durl)
 
   body = ''
   fazdelete(durl, body)
@@ -229,16 +229,21 @@ function remover(id) {
     request.open("DELETE", durl, true)
     request.setRequestHeader("Content-Type", "application/json")
     request.setRequestHeader("Authorization", "Bearer " + pegatoken)
-
+    request.send()   
+    
+    msgSuccess.setAttribute('style', 'display: block')
+    msgSuccess.innerHTML = '<strong>Removendo lançamento'+id+'...</strong>'
+    msgError.setAttribute('style', 'display: none')
+    msgError.innerHTML = ''
     setTimeout(() => {
       // window.location.href = 'login'
-     
-    }, 3000)
-    searchPoint()
-    clear()
+      msgSuccess.setAttribute('style', 'display: none')
+    }, 4000)
+    
+   // clear()
   }
 
-
+  searchPoint()
   //window.alert("deletar " + id)
 
 }
