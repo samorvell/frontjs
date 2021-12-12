@@ -78,18 +78,10 @@ function fazPost(url, body) {
 
     } else {
 
-      
-
-      //let datatoken = JSON.parse(this.responseText)//JSON.parse para converter json para strint literal
-      //console.log(tokenl)
-      //validToken = (datatoken.data.token)
-
-      //clear()
-      // searchPoint()
     }
 
     searchPoint()
-   // clear()
+    // clear()
   }
 
 }
@@ -141,7 +133,7 @@ function registerPoint() {
       // window.location.href = 'login'
       msgSuccess.setAttribute('style', 'display: none')
       fazPost(url, body)
-    }, 3000)    
+    }, 3000)
   }
 }
 
@@ -244,7 +236,7 @@ function remover(id) {
     // clear()
   }
 
-//  searchPoint()
+  //  searchPoint()
   //window.alert("deletar " + id)
 
 }
@@ -274,14 +266,40 @@ function searchPoint() {
       // window.location.href = 'login'
       msgSuccess.setAttribute('style', 'display: none')
       fazGet(urlb, body)
+
     }, 2000)
+
+    getName(id)
 
     //
   }
 
+  function getName(id) {
+
+    
+    //let id = document.getElementById("funcionarioId").value
+    let urlb = "http://pinteligente.ddns.net:30100/api/funcionarios/funcionario/" + id
+    body = {}
+
+    let request = new XMLHttpRequest()
+    request.open("GET", urlb, true)
+    request.setRequestHeader("Content-Type", "application/json")
+    request.setRequestHeader("Authorization", "Bearer " + pegatoken)
+    // request.responseType = "json"
+    //let peganome = request.response    
+    // let emplan = request.response //variavel recebendo o response
+    // console.log(emplan)
+    request.send()
+    request.onload = function () {
+      let nameGet = JSON.parse(request.response)//convertendo para json 
+      nameGet = nameGet.data.nome
+      document.getElementById("nome").value =  nameGet
+//      document.getElementById("data").value = ftdate
+    }
+
+
+  }
+
+
 
 }
-
-
-
-
