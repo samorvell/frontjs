@@ -155,14 +155,26 @@ function fazGet(urlb, body) {
   // console.log(emplan)
   request.send()
   request.onload = function () {
+    if (request.status == 400) {
+
+      funcionarioId.setAttribute('style', 'border-color: red')
+      msgError.setAttribute('style', 'display: block')
+      msgError.innerHTML = 'Lançamentos não encontrado para o id, verifque!'
+      funcionarioId.focus()
+      setTimeout(() => {
+
+        msgError.setAttribute('style', 'display: none')
+      }, 3000)
+    }
+
     if (request.status == 401) {
-      // labelFuncionarioId.setAttribute('style', 'color: red')
+
       funcionarioId.setAttribute('style', 'border-color: red')
       msgError.setAttribute('style', 'display: block')
       msgError.innerHTML = 'Por favor efetuar login novamente!'
       funcionarioId.focus()
       setTimeout(() => {
-        // window.location.href = 'login'
+
         msgError.setAttribute('style', 'display: none')
       }, 3000)
 
@@ -269,14 +281,14 @@ function searchPoint() {
       getName(id)
     }, 2000)
 
-    
+
 
     //
   }
 
   function getName(id) {
 
-    
+
     //let id = document.getElementById("funcionarioId").value
     let urlb = "http://pinteligente.ddns.net:30100/api/funcionarios/funcionario/" + id
     body = {}
@@ -291,10 +303,22 @@ function searchPoint() {
     // console.log(emplan)
     request.send()
     request.onload = function () {
-      let nameGet = JSON.parse(request.response)//convertendo para json 
-      nameGet = nameGet.data.nome
-      document.getElementById("nome").value =  nameGet
-//      document.getElementById("data").value = ftdate
+      if (request.status == 400) {
+
+        funcionarioId.setAttribute('style', 'border-color: red')
+        msgError.setAttribute('style', 'display: block')
+        msgError.innerHTML = 'Lançamentos não encontrado para o id, verifque!'
+        funcionarioId.focus()
+        setTimeout(() => {
+
+          msgError.setAttribute('style', 'display: none')
+        }, 3000)
+      } else {
+        let nameGet = JSON.parse(request.response)//convertendo para json 
+        nameGet = nameGet.data.nome
+        document.getElementById("nome").value = nameGet
+        //      document.getElementById("data").value = ftdate
+      }
     }
 
 
