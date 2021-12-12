@@ -266,10 +266,10 @@ function searchPoint() {
       // window.location.href = 'login'
       msgSuccess.setAttribute('style', 'display: none')
       fazGet(urlb, body)
-
+      getName(id)
     }, 2000)
 
-    getName(id)
+    
 
     //
   }
