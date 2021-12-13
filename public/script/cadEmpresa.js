@@ -70,14 +70,14 @@ cnpj.addEventListener('keyup', () => {
         validCnpj = false
     } else {
         labelCnpj.setAttribute('style', 'color: green')
-        labelCnpj.innerHTML = 'Senha'
+        labelCnpj.innerHTML = 'CNPJ'
         cnpj.setAttribute('style', 'border-color: green')
         validCnpj = true
     }
 })
 
 cpf.addEventListener('keyup', () => {
-    if (cpf.value.length <= 10 || cpf.length >=11) {
+    if (cpf.value.length <= 10 || cpf.length >= 11) {
         labelCpf.setAttribute('style', 'color: red')
         labelCpf.innerHTML = 'CPF *Insira os 11 caracteres'
         cpf.setAttribute('style', 'border-color: red')
@@ -134,14 +134,52 @@ confirmSenha.addEventListener('keyup', () => {
 })*/
 
 function fazPost(url, body) {
-    console.log("Body=", body)
+
+
+
+     console.log("Body=", body)
     let request = new XMLHttpRequest()
     request.open("POST", url, true)
     request.setRequestHeader("Content-Type", "application/json")
     request.send(JSON.stringify(body))
 
+
+
     request.onload = function () {
-        console.log(this.responseText)
+        let returnCademp = JSON.parse(request.response)
+        //console.log(returnCademp)
+
+
+        if (request.status == 400) {
+            let cont = returnCademp.errors.length
+
+            for (let i = 0; i < cont; i++) {
+                let log = returnCademp.errors[i]
+                //console.log(returnCademp.errors[i])
+                //console.log(log)
+                //let tipo = nemplan.data.content[i].tipo
+                if (log == 'CPF inválido' || log == 'CNPJ inválido')
+                cpf.setAttribute('style', 'border-color: red')
+                cnpj.setAttribute('style', 'border-color: red')
+                msgError.setAttribute('style', 'display: block')
+                msgError.innerHTML = 'CPNJ ou CPF invalidos, verifique!'
+                cpf.focus()
+                setTimeout(() => {
+
+                    msgError.setAttribute('style', 'display: none')
+                }, 3000) 
+
+            }
+
+
+
+        } else {           
+
+            setTimeout(() => {
+                window.location.href = 'login'
+            }, 3000)
+        }
+
     }
 
     return request.responseText
@@ -151,36 +189,38 @@ function cadastraEmpresa() {
     //let url = "http://localhost:4050/api/cadastrar-pj"
     event.preventDefault()
 
-    let nome = document.getElementById("nome").value
-    let email = document.getElementById("email").value
-    let senha = document.getElementById("senha").value
-    let cpf = document.getElementById("cpf").value
-    let razaoSocial = document.getElementById("razaoSocial").value
-    let cnpj = document.getElementById("cnpj").value
 
-    body = {
-
-        "nome": nome,
-        "email": email,
-        "senha": senha,
-        "cpf": cpf,
-        "razaoSocial": razaoSocial,
-        "cnpj": cnpj
-    }
 
     if (validNome && validRazaoSocial &&
-        validSenha && validConfirmSenha && validCnpj ) {       
+        validSenha && validConfirmSenha && validCnpj) {
 
         msgSuccess.setAttribute('style', 'display: block')
         msgSuccess.innerHTML = '<strong>Cadastrando empresa...</strong>'
         msgError.setAttribute('style', 'display: none')
         msgError.innerHTML = ''
+        
+        let nome = document.getElementById("nome").value
+        let email = document.getElementById("email").value
+        let senha = document.getElementById("senha").value
+        let cpf = document.getElementById("cpf").value
+        let razaoSocial = document.getElementById("razaoSocial").value
+        let cnpj = document.getElementById("cnpj").value
+
+        body = {
+
+            "nome": nome,
+            "email": email,
+            "senha": senha,
+            "cpf": cpf,
+            "razaoSocial": razaoSocial,
+            "cnpj": cnpj
+        }
+        fazPost(url, body)
 
         setTimeout(() => {
-            window.location.href = 'login'
-        }, 3000)
-
-        fazPost(url, body)
+            // window.location.href = 'login'
+            msgSuccess.setAttribute('style', 'display: none')
+        }, 2000)
 
 
     } else {
@@ -191,7 +231,7 @@ function cadastraEmpresa() {
         setTimeout(() => {
             // window.location.href = 'login'
             msgError.setAttribute('style', 'display: none')
-         }, 3000)
+        }, 3000)
     }
 
 }
