@@ -1,6 +1,6 @@
 let btn = document.querySelector('.fa-eye')
-let urlpj = 'http://pinteligente.ddns.net:30100/api/cadastrar-pj'
-let urllogin = "http://pinteligente.ddns.net:30100/auth"
+let urlpj = 'http://ec2-3-139-73-212.us-east-2.compute.amazonaws.com:4050/api/cadastrar-pj'
+let urllogin = "http://ec2-3-139-73-212.us-east-2.compute.amazonaws.com:4050/auth"
 
 
 let btn = document.querySelector('#senha')
