@@ -1,4 +1,4 @@
-let urllogin = "http://pinteligente.ddns.net:30100/auth"
+let urllogin = "http://localhost:4050/auth"
 let btn = document.querySelector('.fa-eye')
 //let validToken = ''
 btn.addEventListener('click', () => {
