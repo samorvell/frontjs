@@ -1,4 +1,4 @@
-let url = "http://ec2-3-139-73-212.us-east-2.compute.amazonaws.com:4050/api/lancamentos"
+let url = "http://192.168.100.14:4050/api/lancamentos"
 let nome = document.querySelector('#nome')
 let labelNome = document.querySelector('#labelNome')
 //let data = new Date
@@ -222,7 +222,7 @@ function fazGet(urlb, body) {
 
 function remover(id) {
 
-  let durl = 'http://ec2-3-139-73-212.us-east-2.compute.amazonaws.com:4050/api/lancamentos/' + id
+  let durl = 'http://192.168.100.14:4050/api/lancamentos/' + id
   //.log(durl)
 
   body = ''
@@ -255,9 +255,9 @@ function remover(id) {
 
 function searchPoint() {
   let id = document.getElementById("funcionarioId").value
-  let urlb = "http://ec2-3-139-73-212.us-east-2.compute.amazonaws.com:4050/api/lancamentos/funcionario/" + id
+  let urlb = "http://192.168.100.14:4050/api/lancamentos/funcionario/" + id
   body = {}
-  if (urlb == 'http://ec2-3-139-73-212.us-east-2.compute.amazonaws.com:4050/api/lancamentos/funcionario/') {
+  if (urlb == 'http://192.168.100.14:4050/api/lancamentos/funcionario/') {
 
     msgError.setAttribute('style', 'display: block')
     msgError.innerHTML = '<strong>Informe Id do funcionario</strong>'
@@ -280,17 +280,13 @@ function searchPoint() {
       fazGet(urlb, body)
       getName(id)
     }, 2000)
-
-
-
-    //
   }
 
   function getName(id) {
 
 
     //let id = document.getElementById("funcionarioId").value
-    let urlb = "http://ec2-3-139-73-212.us-east-2.compute.amazonaws.com:4050/api/funcionarios/funcionario/" + id
+    let urlb = "http://192.168.100.14:4050/api/funcionarios/funcionario/" + id
     body = {}
 
     let request = new XMLHttpRequest()

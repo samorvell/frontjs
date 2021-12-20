@@ -1,4 +1,4 @@
-let url = "http://ec2-3-139-73-212.us-east-2.compute.amazonaws.com:4050/api/cadastrar-pf"
+let url = "http://192.168.100.14:4050/api/cadastrar-pf"
 
 let pegatoken = localStorage.getItem('token')
 
