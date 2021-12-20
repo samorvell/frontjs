@@ -320,10 +320,5 @@ function searchPoint() {
         //      document.getElementById("data").value = ftdate
       }
     }
-
-
   }
-
-
-
 }

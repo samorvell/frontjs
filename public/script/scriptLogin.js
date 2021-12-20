@@ -1,6 +1,5 @@
 let urllogin = "http://ec2-3-139-73-212.us-east-2.compute.amazonaws.com:4050/auth"
 let btn = document.querySelector('.fa-eye')
-//let validToken = ''
 btn.addEventListener('click', () => {
   let inputSenha = document.querySelector('#senha')
 
@@ -83,8 +82,4 @@ function autenticaUsuario() {
 
     fazPost(urllogin, body)
   }
-
-
-
-
 }
