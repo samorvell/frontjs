@@ -75,6 +75,10 @@ function fazPost(url, body) {
       msgError.setAttribute('style', 'display: block')
       msgError.innerHTML = 'Por favor fazer login novamente'
       inputFuncionarioId.focus()
+      setTimeout(() => {
+        // window.location.href = 'login'
+        msgError.setAttribute('style', 'display: none')
+      }, 3000)
 
     } else {
 
@@ -122,6 +126,7 @@ function registerPoint() {
     setTimeout(() => {
       // window.location.href = 'login'
       msgError.setAttribute('style', 'display: none')
+     
     }, 3000)
 
   } else {
@@ -145,7 +150,6 @@ function clear() {
 
 function fazGet(urlb, body) {
 
-
   let request = new XMLHttpRequest()
   request.open("GET", urlb, true)
   request.setRequestHeader("Content-Type", "application/json")
@@ -164,6 +168,7 @@ function fazGet(urlb, body) {
       setTimeout(() => {
 
         msgError.setAttribute('style', 'display: none')
+        funcionarioId.setAttribute('style', 'display: none')
       }, 3000)
     }
 
@@ -308,12 +313,21 @@ function searchPoint() {
         setTimeout(() => {
 
           msgError.setAttribute('style', 'display: none')
+          funcionarioId.setAttribute('style', 'display: none')
         }, 3000)
       } else {
         let nameGet = JSON.parse(request.response)//convertendo para json 
+        let emprGet = nameGet.data.nameEmpresa
+        console.log(emprGet)
         nameGet = nameGet.data.nome
+        //emprGet = nameGet.data.nameEmpresa
         document.getElementById("nome").value = nameGet
+        document.getElementById("nomeEmpresa").value = emprGet
         //      document.getElementById("data").value = ftdate
+        setTimeout(() => {
+
+          msgError.setAttribute('style', 'display: none')
+        }, 3000)
       }
     }
   }

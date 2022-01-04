@@ -1,6 +1,6 @@
 let url = "http://192.168.100.14:4050/api/cadastrar-pf"
-
 let pegatoken = localStorage.getItem('token')
+let companyId = localStorage.getItem('companyId')
 
 let btn = document.querySelector('#verSenha')
 let btnConfirm = document.querySelector('#verConfirmSenha')
@@ -186,7 +186,7 @@ function regfunc() {
     }
 
     if (validNome && validValorHora &&
-        validSenha && validConfirmSenha && validCnpj &&
+        validSenha && validConfirmSenha && //validCnpj &&
         validEmail && validCpf) {
         //window.alert("deu bom");
 
@@ -196,7 +196,7 @@ function regfunc() {
         msgError.innerHTML = ''
 
         setTimeout(() => {
-             window.location.href = 'listaLancamento'
+            window.location.href = 'listaLancamento'
         }, 4000)
 
         fazPost(url, body)
@@ -210,7 +210,7 @@ function regfunc() {
         setTimeout(() => {
             // window.location.href = 'login'
             msgError.setAttribute('style', 'display: none')
-         }, 3000)
+        }, 3000)
     }
 
 
@@ -236,3 +236,17 @@ btnConfirm.addEventListener('click', () => {
         inputConfirmSenha.setAttribute('type', 'password')
     }
 })
+
+window.onload = function () {
+    let url = 'http://pinteligente.ddns.net:30100/api/empresas/id/' + companyId
+    let request = new XMLHttpRequest()
+    request.open("GET", url, true)
+    request.setRequestHeader("Content-Type", "application/json")
+    request.setRequestHeader("Authorization", "Bearer " + pegatoken)
+    request.send()
+    request.onload = function () {
+        let cpnj = JSON.parse(request.response)
+        let getcnpj = cpnj.data.cnpj
+        document.getElementById("cnpj").value = getcnpj
+    }
+}
