@@ -1,4 +1,4 @@
-let url = "http://ec2-3-139-73-212.us-east-2.compute.amazonaws.com:4050/api/lancamentos"
+let url = "http://192.168.100.14:4050/api/lancamentos"
 let nome = document.querySelector('#nome')
 let labelNome = document.querySelector('#labelNome')
 //let data = new Date
@@ -75,6 +75,10 @@ function fazPost(url, body) {
       msgError.setAttribute('style', 'display: block')
       msgError.innerHTML = 'Por favor fazer login novamente'
       inputFuncionarioId.focus()
+      setTimeout(() => {
+        // window.location.href = 'login'
+        msgError.setAttribute('style', 'display: none')
+      }, 3000)
 
     } else {
 
@@ -122,6 +126,7 @@ function registerPoint() {
     setTimeout(() => {
       // window.location.href = 'login'
       msgError.setAttribute('style', 'display: none')
+     
     }, 3000)
 
   } else {
@@ -145,7 +150,6 @@ function clear() {
 
 function fazGet(urlb, body) {
 
-
   let request = new XMLHttpRequest()
   request.open("GET", urlb, true)
   request.setRequestHeader("Content-Type", "application/json")
@@ -164,6 +168,7 @@ function fazGet(urlb, body) {
       setTimeout(() => {
 
         msgError.setAttribute('style', 'display: none')
+        funcionarioId.setAttribute('style', 'display: none')
       }, 3000)
     }
 
@@ -222,7 +227,7 @@ function fazGet(urlb, body) {
 
 function remover(id) {
 
-  let durl = 'http://ec2-3-139-73-212.us-east-2.compute.amazonaws.com:4050/api/lancamentos/' + id
+  let durl = 'http://192.168.100.14:4050/api/lancamentos/' + id
   //.log(durl)
 
   body = ''
@@ -255,9 +260,9 @@ function remover(id) {
 
 function searchPoint() {
   let id = document.getElementById("funcionarioId").value
-  let urlb = "http://ec2-3-139-73-212.us-east-2.compute.amazonaws.com:4050/api/lancamentos/funcionario/" + id
+  let urlb = "http://192.168.100.14:4050/api/lancamentos/funcionario/" + id
   body = {}
-  if (urlb == 'http://ec2-3-139-73-212.us-east-2.compute.amazonaws.com:4050/api/lancamentos/funcionario/') {
+  if (urlb == 'http://192.168.100.14:4050/api/lancamentos/funcionario/') {
 
     msgError.setAttribute('style', 'display: block')
     msgError.innerHTML = '<strong>Informe Id do funcionario</strong>'
@@ -280,17 +285,13 @@ function searchPoint() {
       fazGet(urlb, body)
       getName(id)
     }, 2000)
-
-
-
-    //
   }
 
   function getName(id) {
 
 
     //let id = document.getElementById("funcionarioId").value
-    let urlb = "http://ec2-3-139-73-212.us-east-2.compute.amazonaws.com:4050/api/funcionarios/funcionario/" + id
+    let urlb = "http://192.168.100.14:4050/api/funcionarios/funcionario/" + id
     body = {}
 
     let request = new XMLHttpRequest()
@@ -312,12 +313,21 @@ function searchPoint() {
         setTimeout(() => {
 
           msgError.setAttribute('style', 'display: none')
+          funcionarioId.setAttribute('style', 'display: none')
         }, 3000)
       } else {
         let nameGet = JSON.parse(request.response)//convertendo para json 
+        let emprGet = nameGet.data.nameEmpresa
+        console.log(emprGet)
         nameGet = nameGet.data.nome
+        //emprGet = nameGet.data.nameEmpresa
         document.getElementById("nome").value = nameGet
+        document.getElementById("nomeEmpresa").value = emprGet
         //      document.getElementById("data").value = ftdate
+        setTimeout(() => {
+
+          msgError.setAttribute('style', 'display: none')
+        }, 3000)
       }
     }
   }

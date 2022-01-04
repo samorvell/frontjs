@@ -1,4 +1,7 @@
-let urllogin = "http://ec2-3-139-73-212.us-east-2.compute.amazonaws.com:4050/auth"
+let urllogin = "http://pinteligente.ddns.net:30100/auth"
+let pegatoken = localStorage.getItem('token')
+let msgError = document.querySelector('#msgError')
+let msgSuccess = document.querySelector('#msgSuccess')
 let btn = document.querySelector('.fa-eye')
 btn.addEventListener('click', () => {
   let inputSenha = document.querySelector('#senha')
@@ -40,13 +43,35 @@ function fazPost(urllogin, body) {
 
       let datatoken = JSON.parse(this.responseText)//JSON.parse para converter json para strint literal
       validToken = (datatoken.data.token)
-      localStorage.setItem('token', validToken)
-      window.location.href = 'cadastroFuncionario'
+      //localStorage.setItem('token', validToken)
+
+      msgSuccess.setAttribute('style', 'display: block')
+      msgSuccess.innerHTML = '<strong>Entrando...</strong>'
+      msgError.setAttribute('style', 'display: none')
+      msgError.innerHTML = ''
+      let profile = localStorage.getItem('Profile')
+
+      if (profile == 'ROLE_ADMIN') {
+        setTimeout(() => {
+          window.location.href = 'cadastroFuncionario'
+          getuser(email)
+        }, 2000)
+
+      } else {
+        setTimeout(() => {
+          window.location.href = 'listaLancamento'
+          getuser(email)
+        }, 2000)
+
+      }
+
+
     }
 
   }
 
   return request.status
+  //getuser(email)
 }
 
 function autenticaUsuario() {
@@ -81,5 +106,36 @@ function autenticaUsuario() {
   } else {
 
     fazPost(urllogin, body)
+    setTimeout(() => {
+      // window.location.href = 'login'
+      getuser(email)
+    }, 1000)
   }
+
+
+}
+
+
+
+function getuser(email) {
+  let url = 'http://pinteligente.ddns.net:30100/api/funcionarios/' + email
+  let request = new XMLHttpRequest()
+  request.open("GET", url, true)
+  request.setRequestHeader("Content-Type", "application/json")
+  request.setRequestHeader("Authorization", "Bearer " + pegatoken)
+  //request.responseType = "json"
+  // let emplan = request.response //variavel recebendo o response
+  // console.log(emplan)
+  request.send()
+  request.onload = function () {
+    let func = JSON.parse(request.response)
+    let companyId = func.data.empresaId
+    let profile = func.data.perfil
+    //console.log(profile)
+    localStorage.setItem('companyId', companyId)
+    localStorage.setItem('Profile', profile)
+
+
+  }
+
 }
