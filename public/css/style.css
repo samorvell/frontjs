@@ -224,6 +224,10 @@ a:hover {
 
 }
 
+#profile {
+    display: none;
+}
+
 #menu-h li {
     display: inline;
 }

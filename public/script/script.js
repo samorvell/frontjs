@@ -1,3 +1,5 @@
+
+
 let url = "http://192.168.100.14:4050/api/lancamentos"
 let nome = document.querySelector('#nome')
 let labelNome = document.querySelector('#labelNome')
@@ -126,7 +128,7 @@ function registerPoint() {
     setTimeout(() => {
       // window.location.href = 'login'
       msgError.setAttribute('style', 'display: none')
-     
+
     }, 3000)
 
   } else {
@@ -149,11 +151,12 @@ function clear() {
 }
 
 function fazGet(urlb, body) {
-
-  let request = new XMLHttpRequest()
+  let companyId =  localStorage.getItem('companyId')
+    let request = new XMLHttpRequest()
   request.open("GET", urlb, true)
   request.setRequestHeader("Content-Type", "application/json")
   request.setRequestHeader("Authorization", "Bearer " + pegatoken)
+  request.setRequestHeader("companyId", companyId)
   //request.responseType = "json"
   // let emplan = request.response //variavel recebendo o response
   // console.log(emplan)
@@ -288,7 +291,7 @@ function searchPoint() {
   }
 
   function getName(id) {
-
+    let companyId = localStorage.getItem('companyId')
 
     //let id = document.getElementById("funcionarioId").value
     let urlb = "http://192.168.100.14:4050/api/funcionarios/funcionario/" + id
@@ -298,6 +301,7 @@ function searchPoint() {
     request.open("GET", urlb, true)
     request.setRequestHeader("Content-Type", "application/json")
     request.setRequestHeader("Authorization", "Bearer " + pegatoken)
+    request.setRequestHeader("companyId", companyId)
     // request.responseType = "json"
     //let peganome = request.response    
     // let emplan = request.response //variavel recebendo o response
@@ -318,12 +322,13 @@ function searchPoint() {
       } else {
         let nameGet = JSON.parse(request.response)//convertendo para json 
         let emprGet = nameGet.data.nameEmpresa
-        console.log(emprGet)
+
+        //    console.log(emplId)
         nameGet = nameGet.data.nome
         //emprGet = nameGet.data.nameEmpresa
         document.getElementById("nome").value = nameGet
         document.getElementById("nomeEmpresa").value = emprGet
-        //      document.getElementById("data").value = ftdate
+
         setTimeout(() => {
 
           msgError.setAttribute('style', 'display: none')
@@ -331,4 +336,17 @@ function searchPoint() {
       }
     }
   }
+}
+
+let empId = localStorage.getItem('EmployerId')
+let perfil = localStorage.getItem('Profile')
+window.onload = function () {
+  if (perfil != 'ROLE_ADMIN') {
+    document.getElementById("funcionarioId").value = empId
+  }
+
+
+  //localStorage.getItem('Profile', profile)
+  //console.log(perfil)
+
 }

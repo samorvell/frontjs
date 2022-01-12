@@ -1,4 +1,4 @@
-let urllogin = "http://pinteligente.ddns.net:30100/auth"
+let urllogin = "http://192.168.100.14:4050/auth"
 let pegatoken = localStorage.getItem('token')
 let msgError = document.querySelector('#msgError')
 let msgSuccess = document.querySelector('#msgSuccess')
@@ -43,13 +43,14 @@ function fazPost(urllogin, body) {
 
       let datatoken = JSON.parse(this.responseText)//JSON.parse para converter json para strint literal
       validToken = (datatoken.data.token)
-      //localStorage.setItem('token', validToken)
+      localStorage.setItem('token', validToken)
 
       msgSuccess.setAttribute('style', 'display: block')
       msgSuccess.innerHTML = '<strong>Entrando...</strong>'
       msgError.setAttribute('style', 'display: none')
       msgError.innerHTML = ''
       let profile = localStorage.getItem('Profile')
+     // window.location.href = 'cadastroFuncionario'
 
       if (profile == 'ROLE_ADMIN') {
         setTimeout(() => {
@@ -59,15 +60,12 @@ function fazPost(urllogin, body) {
 
       } else {
         setTimeout(() => {
-          window.location.href = 'listaLancamento'
+          window.location.href = 'lancamentofuncionario'
           getuser(email)
         }, 2000)
 
       }
-
-
     }
-
   }
 
   return request.status
@@ -106,23 +104,17 @@ function autenticaUsuario() {
   } else {
 
     fazPost(urllogin, body)
-    setTimeout(() => {
-      // window.location.href = 'login'
-      getuser(email)
-    }, 1000)
+    getuser(email)   
   }
-
-
 }
 
-
-
 function getuser(email) {
-  let url = 'http://pinteligente.ddns.net:30100/api/funcionarios/' + email
+  let url = 'http://192.168.100.14:4050/api/funcionarios/' + email
   let request = new XMLHttpRequest()
   request.open("GET", url, true)
   request.setRequestHeader("Content-Type", "application/json")
   request.setRequestHeader("Authorization", "Bearer " + pegatoken)
+ // request.setRequestHeader("companyId", companyId)
   //request.responseType = "json"
   // let emplan = request.response //variavel recebendo o response
   // console.log(emplan)
@@ -131,11 +123,12 @@ function getuser(email) {
     let func = JSON.parse(request.response)
     let companyId = func.data.empresaId
     let profile = func.data.perfil
+    let emplId =  func.data.id
     //console.log(profile)
     localStorage.setItem('companyId', companyId)
     localStorage.setItem('Profile', profile)
-
-
+    localStorage.setItem('EmployerId', emplId)
+    //let teste = localStorage.getItem('Profile', profile)
+    //console.log(teste)
   }
-
 }

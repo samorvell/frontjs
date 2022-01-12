@@ -238,7 +238,7 @@ btnConfirm.addEventListener('click', () => {
 })
 
 window.onload = function () {
-    let url = 'http://pinteligente.ddns.net:30100/api/empresas/id/' + companyId
+    let url = 'http://192.168.100.14:4050/api/empresas/id/' + companyId
     let request = new XMLHttpRequest()
     request.open("GET", url, true)
     request.setRequestHeader("Content-Type", "application/json")

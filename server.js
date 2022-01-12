@@ -16,6 +16,10 @@ app.get("/", function (req, res) {
     res.sendFile(__dirname + "/src/home.html")
 })
 
+app.get("/lancamentofuncionario", function (req, res) {
+    res.sendFile(__dirname + "/src/lancamentofuncionario.html")
+})
+
 app.get("/listaLancamento", function (req, res) {
     res.sendFile(__dirname + "/src/listaLancamento.html")
 })
@@ -49,5 +53,5 @@ app.use(express.static(path.join(__dirname, "public")));
 
 
 app.listen(porta, () => {
-    console.log(`Servidor execultando em: http://localhost:${porta}`)
+    console.log(`Servidor executando em: http://localhost:${porta}`)
 })
