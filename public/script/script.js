@@ -1,12 +1,11 @@
-
-
-let url = "http://192.168.100.14:4050/api/lancamentos"
-let nome = document.querySelector('#nome')
-let labelNome = document.querySelector('#labelNome')
-//let data = new Date
+let url = "http://localhost:4050/api/lancamentos"
 let pegatoken = localStorage.getItem('token')
 let msgError = document.querySelector('#msgError')
 let msgSuccess = document.querySelector('#msgSuccess')
+let btn = document.querySelector('.fa-eye')
+let nome = document.querySelector('#nome')
+let labelNome = document.querySelector('#labelNome')
+
 function dataFixa() {
   let data = new Date(),
     day = data.getDate().toString().padStart(2, '0'),
@@ -151,8 +150,8 @@ function clear() {
 }
 
 function fazGet(urlb, body) {
-  let companyId =  localStorage.getItem('companyId')
-    let request = new XMLHttpRequest()
+  let companyId = localStorage.getItem('companyId')
+  let request = new XMLHttpRequest()
   request.open("GET", urlb, true)
   request.setRequestHeader("Content-Type", "application/json")
   request.setRequestHeader("Authorization", "Bearer " + pegatoken)
@@ -171,7 +170,8 @@ function fazGet(urlb, body) {
       setTimeout(() => {
 
         msgError.setAttribute('style', 'display: none')
-        funcionarioId.setAttribute('style', 'display: none')
+        funcionarioId.setAttribute('style', 'border-color: #4038a0')
+        //funcionarioId.setAttribute('style', 'display: none')
       }, 3000)
     }
 
@@ -230,7 +230,7 @@ function fazGet(urlb, body) {
 
 function remover(id) {
 
-  let durl = 'http://192.168.100.14:4050/api/lancamentos/' + id
+  let durl = 'http://localhost:4050/api/lancamentos/' + id
   //.log(durl)
 
   body = ''
@@ -263,9 +263,9 @@ function remover(id) {
 
 function searchPoint() {
   let id = document.getElementById("funcionarioId").value
-  let urlb = "http://192.168.100.14:4050/api/lancamentos/funcionario/" + id
+  let urlb = "http://localhost:4050/api/lancamentos/funcionario/" + id
   body = {}
-  if (urlb == 'http://192.168.100.14:4050/api/lancamentos/funcionario/') {
+  if (urlb == 'http://localhost:4050/api/lancamentos/funcionario/') {
 
     msgError.setAttribute('style', 'display: block')
     msgError.innerHTML = '<strong>Informe Id do funcionario</strong>'
@@ -285,16 +285,18 @@ function searchPoint() {
     setTimeout(() => {
       // window.location.href = 'login'
       msgSuccess.setAttribute('style', 'display: none')
+
       fazGet(urlb, body)
       getName(id)
     }, 2000)
+
+
   }
 
   function getName(id) {
     let companyId = localStorage.getItem('companyId')
-
     //let id = document.getElementById("funcionarioId").value
-    let urlb = "http://192.168.100.14:4050/api/funcionarios/funcionario/" + id
+    let urlb = "http://localhost:4050/api/funcionarios/funcionario/" + id
     body = {}
 
     let request = new XMLHttpRequest()
@@ -317,7 +319,8 @@ function searchPoint() {
         setTimeout(() => {
 
           msgError.setAttribute('style', 'display: none')
-          funcionarioId.setAttribute('style', 'display: none')
+          funcionarioId.setAttribute('style', 'border-color: #4038a0')
+          //funcionarioId.focus()
         }, 3000)
       } else {
         let nameGet = JSON.parse(request.response)//convertendo para json 

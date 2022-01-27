@@ -1,4 +1,4 @@
-let url = "http://192.168.100.14:4050/api/cadastrar-pj"
+let url = "http://localhost:4050/api/cadastrar-pj"
 
 let btn = document.querySelector('#verSenha')
 let btnConfirm = document.querySelector('#verConfirmSenha')

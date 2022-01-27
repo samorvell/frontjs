@@ -1,4 +1,3 @@
-let urllogin = "http://192.168.100.14:4050/auth"
 let pegatoken = localStorage.getItem('token')
 let msgError = document.querySelector('#msgError')
 let msgSuccess = document.querySelector('#msgSuccess')
@@ -69,11 +68,10 @@ function fazPost(urllogin, body) {
   }
 
   return request.status
-  //getuser(email)
 }
 
 function autenticaUsuario() {
-
+  let urllogin = "http://localhost:4050/auth"
   let inputEmail = document.querySelector('#email')
   let emailLabel = document.querySelector('#emailLabel')
   let inputSenha = document.querySelector('#senha')
@@ -101,6 +99,12 @@ function autenticaUsuario() {
     msgError.innerHTML = 'Usuário ou senha incorretos'
     inputEmail.focus()
 
+    setTimeout(() => {
+      
+
+      msgError.setAttribute('style', 'display: none')
+    }, 3000)
+
   } else {
 
     fazPost(urllogin, body)
@@ -109,7 +113,7 @@ function autenticaUsuario() {
 }
 
 function getuser(email) {
-  let url = 'http://192.168.100.14:4050/api/funcionarios/' + email
+  let url = 'http://localhost:4050/api/funcionarios/' + email
   let request = new XMLHttpRequest()
   request.open("GET", url, true)
   request.setRequestHeader("Content-Type", "application/json")
@@ -124,7 +128,8 @@ function getuser(email) {
     let companyId = func.data.empresaId
     let profile = func.data.perfil
     let emplId =  func.data.id
-    //console.log(profile)
+    console.log(func.data)
+    console.log(func)
     localStorage.setItem('companyId', companyId)
     localStorage.setItem('Profile', profile)
     localStorage.setItem('EmployerId', emplId)
