@@ -48,6 +48,9 @@ app.get("/sobre", function (req, res) {
     res.sendFile(__dirname + "/src/sobre.html")
 })
 
+app.get("/teste", function (req, res) {
+    res.sendFile(__dirname + "/src/testelancamento.html")
+})
 
 app.use(express.static(path.join(__dirname, "public")));
 
