@@ -1,3 +1,6 @@
+/*Author: Samuel Silva
+  Version: 1.0*/
+
 let url = "http://localhost:4050/api/cadastrar-pj"
 
 let btn = document.querySelector('#verSenha')
@@ -34,6 +37,7 @@ let validConfirmSenha = false
 let msgError = document.querySelector('#msgError')
 let msgSuccess = document.querySelector('#msgSuccess')
 
+//valida campo nome quantidade de caracteres
 nome.addEventListener('keyup', () => {
     if (nome.value.length <= 2) {
         labelNome.setAttribute('style', 'color: red')
@@ -48,6 +52,7 @@ nome.addEventListener('keyup', () => {
     }
 })
 
+//valida campo razão social quantidade de caracteres
 razaoSocial.addEventListener('keyup', () => {
     if (razaoSocial.value.length <= 4) {
         labelRazaoSocial.setAttribute('style', 'color: red')
@@ -62,6 +67,7 @@ razaoSocial.addEventListener('keyup', () => {
     }
 })
 
+//valida campo cnpj quantidade de caracteres
 cnpj.addEventListener('keyup', () => {
     if (cnpj.value.length <= 13) {
         labelCnpj.setAttribute('style', 'color: red')
@@ -76,6 +82,7 @@ cnpj.addEventListener('keyup', () => {
     }
 })
 
+//valida campo cpf quantidade de caracteres
 cpf.addEventListener('keyup', () => {
     if (cpf.value.length <= 10 || cpf.length >= 11) {
         labelCpf.setAttribute('style', 'color: red')
@@ -90,6 +97,7 @@ cpf.addEventListener('keyup', () => {
     }
 })
 
+//valida senha senha quantidade de caracteres
 senha.addEventListener('keyup', () => {
     if (senha.value.length <= 5) {
         labelSenha.setAttribute('style', 'color: red')
@@ -104,7 +112,7 @@ senha.addEventListener('keyup', () => {
     }
 })
 
-
+//valida campo confirma senha quantidade de caracteres
 confirmSenha.addEventListener('keyup', () => {
     if (senha.value != confirmSenha.value) {
         labelConfirmSenha.setAttribute('style', 'color: red')
@@ -119,47 +127,30 @@ confirmSenha.addEventListener('keyup', () => {
     }
 })
 
-/*email.addEventListener('keyup', () => {
-    if (email.value != email.value) {
-        labelEmail.setAttribute('style', 'color: red')
-        labelEmail.innerHTML = 'Confirmar Senha *As senhas não conferem'
-        email.setAttribute('style', 'border-color: red')
-        validEmail = false
-    } else {
-        labelEmail.setAttribute('style', 'color: green')
-        labelEmail.innerHTML = 'Confirmar Senha'
-        email.setAttribute('style', 'border-color: green')
-        validEmail = true
-    }
-})*/
-
+//fazPost
 function fazPost(url, body) {
 
-
-
-    // console.log("Body=", body)
+    //cria variavel request passando a classe XMLHttpRequest
     let request = new XMLHttpRequest()
+    //abrindo a request do tipo post passando variavel url
     request.open("POST", url, true)
+    //informa no cabeçalho o tipo de aplicação do objeto json
     request.setRequestHeader("Content-Type", "application/json")
+    //envia request convertendo para json
     request.send(JSON.stringify(body))
-
-
 
     request.onload = function () {
         let returnCademp = JSON.parse(request.response)
-        //console.log(returnCademp)
 
-
+        //validando a resposta da api 
         if (request.status == 400) {
             let cont = returnCademp.errors.length
 
             for (let i = 0; i < cont; i++) {
                 let log = returnCademp.errors[i]
-                //console.log(returnCademp.errors[i])
-                //console.log(log)
-                //let tipo = nemplan.data.content[i].tipo
+
                 if (log == 'CPF inválido' || log == 'CNPJ inválido')
-                cpf.setAttribute('style', 'border-color: red')
+                    cpf.setAttribute('style', 'border-color: red')
                 cnpj.setAttribute('style', 'border-color: red')
                 msgError.setAttribute('style', 'display: block')
                 msgError.innerHTML = 'CPNJ ou CPF invalidos, verifique!'
@@ -167,13 +158,13 @@ function fazPost(url, body) {
                 setTimeout(() => {
 
                     msgError.setAttribute('style', 'display: none')
-                }, 3000) 
+                }, 3000)
 
             }
 
 
 
-        } else {           
+        } else {
 
             setTimeout(() => {
                 window.location.href = 'login'
@@ -185,12 +176,11 @@ function fazPost(url, body) {
     return request.responseText
 }
 
+//cadastraEmpresa
 function cadastraEmpresa() {
-    //let url = "http://localhost:4050/api/cadastrar-pj"
+
     event.preventDefault()
-
-
-
+    //validação dos campos
     if (validNome && validRazaoSocial &&
         validSenha && validConfirmSenha && validCnpj) {
 
@@ -198,7 +188,7 @@ function cadastraEmpresa() {
         msgSuccess.innerHTML = '<strong>Cadastrando empresa...</strong>'
         msgError.setAttribute('style', 'display: none')
         msgError.innerHTML = ''
-        
+
         let nome = document.getElementById("nome").value
         let email = document.getElementById("email").value
         let senha = document.getElementById("senha").value
@@ -206,6 +196,7 @@ function cadastraEmpresa() {
         let razaoSocial = document.getElementById("razaoSocial").value
         let cnpj = document.getElementById("cnpj").value
 
+        //criando o json para envio
         body = {
 
             "nome": nome,
@@ -218,7 +209,6 @@ function cadastraEmpresa() {
         fazPost(url, body)
 
         setTimeout(() => {
-            // window.location.href = 'login'
             msgSuccess.setAttribute('style', 'display: none')
         }, 2000)
 
@@ -229,7 +219,6 @@ function cadastraEmpresa() {
         msgSuccess.innerHTML = ''
         msgSuccess.setAttribute('style', 'display: none')
         setTimeout(() => {
-            // window.location.href = 'login'
             msgError.setAttribute('style', 'display: none')
         }, 3000)
     }

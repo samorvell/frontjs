@@ -1,3 +1,6 @@
+/*Author: Samuel Silva
+  Version: 1.0*/
+
 let url = "http://localhost:4050/api/lancamentos"
 let pegatoken = localStorage.getItem('token')
 let msgError = document.querySelector('#msgError')

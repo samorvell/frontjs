@@ -1,3 +1,6 @@
+/*Author: Samuel Silva
+  Version: 1.0*/
+
 let pegatoken = localStorage.getItem('token')
 let msgError = document.querySelector('#msgError')
 let msgSuccess = document.querySelector('#msgSuccess')
@@ -49,7 +52,7 @@ function fazPost(urllogin, body) {
       msgError.setAttribute('style', 'display: none')
       msgError.innerHTML = ''
       let profile = localStorage.getItem('Profile')
-     // window.location.href = 'cadastroFuncionario'
+      // window.location.href = 'cadastroFuncionario'
 
       if (profile == 'ROLE_ADMIN') {
         setTimeout(() => {
@@ -100,7 +103,7 @@ function autenticaUsuario() {
     inputEmail.focus()
 
     setTimeout(() => {
-      
+
 
       msgError.setAttribute('style', 'display: none')
     }, 3000)
@@ -108,7 +111,7 @@ function autenticaUsuario() {
   } else {
 
     fazPost(urllogin, body)
-    getuser(email)   
+    getuser(email)
   }
 }
 
@@ -118,7 +121,7 @@ function getuser(email) {
   request.open("GET", url, true)
   request.setRequestHeader("Content-Type", "application/json")
   request.setRequestHeader("Authorization", "Bearer " + pegatoken)
- // request.setRequestHeader("companyId", companyId)
+  // request.setRequestHeader("companyId", companyId)
   //request.responseType = "json"
   // let emplan = request.response //variavel recebendo o response
   // console.log(emplan)
@@ -127,7 +130,7 @@ function getuser(email) {
     let func = JSON.parse(request.response)
     let companyId = func.data.empresaId
     let profile = func.data.perfil
-    let emplId =  func.data.id
+    let emplId = func.data.id
     console.log(func.data)
     console.log(func)
     localStorage.setItem('companyId', companyId)

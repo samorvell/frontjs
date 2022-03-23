@@ -1,9 +1,12 @@
+/*Author: Samuel Silva
+  Version: 1.0*/
+
 let btn = document.querySelector('.fa-eye')
 let urlpj = 'http://192.168.100.14:4050/api/cadastrar-pj'
 let urllogin = "http://192.168.100.14:4050/auth"
 
 
-let btn = document.querySelector('#senha')
+let btnn = document.querySelector('#senha')
 let btnConfirm = document.querySelector('#confirmSenha')
 /*variaveis acima refernete ao mostrar e ocultar senha*/
 
@@ -98,16 +101,15 @@ confirmSenha.addEventListener('keyup', () => {
     }
 })
 
-let btn = document.querySelector('.fa-eye')
 
-btn.addEventListener('click', ()=>{
-  let inputSenha = document.querySelector('#senha')
-  
-  if(inputSenha.getAttribute('type') == 'password'){
-    inputSenha.setAttribute('type', 'text')
-  } else {
-    inputSenha.setAttribute('type', 'password')
-  }
+btn.addEventListener('click', () => {
+    let inputSenha = document.querySelector('#senha')
+
+    if (inputSenha.getAttribute('type') == 'password') {
+        inputSenha.setAttribute('type', 'text')
+    } else {
+        inputSenha.setAttribute('type', 'password')
+    }
 })
 
 function autenticaUsuario() {
@@ -136,27 +138,27 @@ function cadastrar() {
         validCnpj && validSenha &&
         validConfirmSenha) {
 
-           
-       
-         validData = true
-         console.log(nome.value)
-         msgSuccess.setAttribute('style', 'display: block')
-         msgSuccess.innerHTML = '<strong>Cadastrando usuário...</strong>'
-         msgError.setAttribute('style', 'display:block')
-         msgError.innerHTML = ''
 
-         setTimeout(()=>{
+
+        validData = true
+        console.log(nome.value)
+        msgSuccess.setAttribute('style', 'display: block')
+        msgSuccess.innerHTML = '<strong>Cadastrando usuário...</strong>'
+        msgError.setAttribute('style', 'display:block')
+        msgError.innerHTML = ''
+
+        setTimeout(() => {
             window.location.href = 'listaLancamento'
         }, 3000)
 
     } else {
 
         alert('Nãoooo deu bom')
-         validData = false
-         msgError.setAttribute('style', 'display: block')
-         msgError.innerHTML = '<strong>Preencha todos os campos antes de cadastrar</strong>'
-         msgSuccess.setAttribute('style', 'display: none')
-         msgSuccess.innerHTML = ''
+        validData = false
+        msgError.setAttribute('style', 'display: block')
+        msgError.innerHTML = '<strong>Preencha todos os campos antes de cadastrar</strong>'
+        msgSuccess.setAttribute('style', 'display: none')
+        msgSuccess.innerHTML = ''
     }
 
 

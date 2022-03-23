@@ -1,3 +1,6 @@
+/*Author: Samuel Silva
+  Version: 1.0*/
+
 let url = "http://localhost:4050/api/cadastrar-pf"
 let pegatoken = localStorage.getItem('token')
 let companyId = localStorage.getItem('companyId')

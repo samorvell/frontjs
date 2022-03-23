@@ -1,3 +1,6 @@
+/*Author: Samuel Silva
+  Version: 1.0*/
+
 let url = "http://localhost:4050/api/lancamentos"
 let pegatoken = localStorage.getItem('token')
 let msgError = document.querySelector('#msgError')
@@ -200,13 +203,13 @@ function fazGet(urlb, body) {
       let date = nemplan.data.content[0].data.substring(0, 11)
       let time = nemplan.data.content[0].data.substring(11, 19)
 
-      console.log(date +''+ time )
+      console.log(date + '' + time)
 
 
 
       for (let i = 0; i < nemplan.data.totalElements; i++) {
 
-        
+
 
 
         /*let tr = tbody.insertRow()
