@@ -1,6 +1,8 @@
 /*Author: Samuel Silva
   Version: 1.0*/
 
+//const { request } = require("express")
+
 let pegatoken = localStorage.getItem('token')
 let msgError = document.querySelector('#msgError')
 let msgSuccess = document.querySelector('#msgSuccess')
@@ -43,7 +45,7 @@ function fazPost(urllogin, body) {
 
     } else {
 
-      let datatoken = JSON.parse(this.responseText)//JSON.parse para converter json para strint literal
+      let datatoken = JSON.parse(this.responseText)//JSON.parse para converter json para string literal
       validToken = (datatoken.data.token)
       localStorage.setItem('token', validToken)
 
@@ -52,6 +54,7 @@ function fazPost(urllogin, body) {
       msgError.setAttribute('style', 'display: none')
       msgError.innerHTML = ''
       let profile = localStorage.getItem('Profile')
+
       // window.location.href = 'cadastroFuncionario'
 
       if (profile == 'ROLE_ADMIN') {
@@ -68,9 +71,10 @@ function fazPost(urllogin, body) {
 
       }
     }
-  }
 
-  return request.status
+
+    return request.status
+  }
 }
 
 function autenticaUsuario() {
@@ -112,6 +116,13 @@ function autenticaUsuario() {
 
     fazPost(urllogin, body)
     getuser(email)
+
+
+    // setTimeout(() => {
+    //   window.location.href = 'cadastroFuncionario'
+    //   //getuser(email)
+    // }, 2000)
+
   }
 }
 
@@ -136,7 +147,9 @@ function getuser(email) {
     localStorage.setItem('companyId', companyId)
     localStorage.setItem('Profile', profile)
     localStorage.setItem('EmployerId', emplId)
-    //let teste = localStorage.getItem('Profile', profile)
-    //console.log(teste)
+
+
+    let teste = localStorage.getItem('Profile', profile)
+    console.log(teste)
   }
 }

@@ -1,0 +1,344 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    #if ($companyId == 1)
+    <title>Leroy Merlin</title>
+    #elseif ($companyId == 2)
+    <title>Obramax</title>
+    #end
+
+
+    <style type="text/css">
+        body {
+            width: 100% !important;
+        }
+
+        body,
+        table,
+        td,
+        a {
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+            padding: 0;
+            margin: 0;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        table td {
+            border-collapse: collapse !important;
+        }
+
+        img {
+            border: 0;
+            height: auto;
+            outline: none;
+            text-decoration: none;
+            max-width: 100%;
+        }
+
+        table {
+            mso-table-lspace: 0pt;
+            mso-table-rspace: 0pt;
+        }
+
+        img {
+            -ms-interpolation-mode: bicubic;
+        }
+
+        #outlook a {
+            padding: 0;
+        }
+
+        .ExternalClass {
+            width: 100%;
+        }
+
+        .ExternalClass,
+        .ExternalClass p,
+        .ExternalClass span,
+        .ExternalClass font,
+        .ExternalClass td,
+        .ExternalClass div {
+            line-height: 100%;
+        }
+
+        .appleLinks a {
+            color: #000000;
+            text-decoration: none;
+        }
+
+        @-ms-viewport {
+            width: device-width
+        }
+
+        @media screen and (min-width: 601px) {
+            .container {
+                width: 600px !important;
+            }
+        }
+
+        @media screen and (max-width: 601px) {
+            .hidden-mobile {
+                display: none !important;
+            }
+        }
+
+        @media only screen and (max-width:480px) {
+            table[class*=m-full] {
+                width: 100% !important
+            }
+
+            div[class*=m-full] {
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+
+            div[class*=coll] {
+                width: 100% !important;
+                display: block !important;
+            }
+
+            table[class*=m-center] {
+                float: none !important;
+                margin: auto !important;
+            }
+
+            td[class*=m-center] {
+                text-align: center !important;
+            }
+
+            td[class*=m-height] {
+                height: auto !important;
+            }
+
+            td[class*=m-hide] {
+                display: none !important;
+            }
+
+            img[ // Busca o email fromclass*=m-full] { width:100% !important; max-width:100% !important;}
+
+            table[class*=m-hide] {
+                display: none !important;
+            }
+
+            td[class*=coll] {
+                display: block !important;
+                width: 100% !important;
+            }
+
+            td[class*=m-padding] {
+                padding: 10px 0 !important;
+            }
+
+            td[class*=m-border] {
+                border-right: none !important;
+                border-left: none !important;
+                border-top: 1px solid #666666 !important;
+                border-bottom: 1px solid #666666 !important;
+            }
+
+            td[class*=m-text] {
+                font-size: 14px !important;
+            }
+
+            td[class*=l-border] {
+                border-left: none !important;
+            }
+
+            td[class*=bg-verde] {
+                background: #70c23c !important;
+            }
+
+            td[class*=legal] a {
+                color: #6fc03a !important;
+            }
+
+            table[class*=b-border] {
+                border-bottom: 1px solid #666666 !important;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <center style="width:100%;table-layout:fixed;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;">
+        <div style="max-width:660px;margin-top:0;margin-bottom:0;margin-right:auto;margin-left:auto;">
+            <!--[if (gte mso 9)|(IE)]><table width="600" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td><![endif]-->
+            <table cellpadding="0" cellspacing="0" border="0" align="center"
+                style="width: 100%; max-width:600px; border-spacing:0;">
+
+                <!--Início Menu-->
+                <tbody>
+                    <tr>
+                        #if ($companyId == 1)
+                        <td bgcolor="#72bf44"
+                            style="text-align: center; vertical-align: top; font-size: 0;border-bottom:2px solid #ffffff;">
+                            #elseif ($companyId == 2)
+                        <td bgcolor="#FA7507"
+                            style="text-align: center; vertical-align: top; font-size: 0;border-bottom:2px solid #ffffff;">
+                            #end
+                            <!--[if (gte mso 9)|(IE)]>
+                              <table width="100%" align="center" cellpadding="0" cellspacing="0" border="0">
+                                  <tr>
+                                      <td>
+                              <![endif]-->
+                            <div style="width:100%; max-width: 63px; display: inline-block; vertical-align: top;"
+                                class="m-full">
+                                <table cellpadding="0" cellspacing="0" border="0" width="100%" style=" border-spacing:0"
+                                    align="center">
+                                    <tbody>
+                                        <tr>
+                                            <td align="center" valign="middle">
+                                                <!--Alterar link e logo obramax-->
+                                                #if ($companyId == 1)
+                                                <a href="http://www.leroymerlin.com.br/?&amp;utm_source=Mandrillmail&amp;utm_medium=Email&amp;utm_campaign=pedido_recebido"
+                                                    target="_blank">
+                                                    <img src="http://image.exclusivo.leroymerlin.com.br/lib/fe9613727463057e71/m/2/lg_header.gif"
+                                                        alt="" width="63" border="0" style="display:block;">
+                                                    #elseif ($companyId == 2)
+                                                    <a href="https://www.obramax.com.br/" target="_blank">
+                                                        <img src="https://plataforma.leroymerlin.com.br/downloads/logo-obramaxx.png"
+                                                            alt="" width="85" border="0" style="display:block;">
+                                                        #end
+                                                    </a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!--[if (gte mso 9)|(IE)]>
+                              </td><td>
+                              <![endif]-->
+                            <div style="width:100%; max-width: 537px; display: inline-block; vertical-align: top;"
+                                class="m-full hidden-mobile">
+                                <table cellpadding="0" cellspacing="0" border="0" width="100%" align="center"
+                                    style="border-spacing:0;">
+                                    <tbody>
+                                        <tr>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!--[if (gte mso 9)|(IE)]>
+                              </td>
+                              </tr>
+                              </table>
+                              <![endif]-->
+                        </td>
+                    </tr>
+                    <!--Fim Menu-->
+
+                    <!--Início saudação-->
+                    <tr>
+                        <td align="center" valign="middle" style="padding:15px 30px;">
+                            <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                                <tbody>
+                                    <tr>
+                                        <H3 style="color:#4D4947">Cancelamento Premium</H3>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+
+                    <!--Fim saudação-->
+                    <tr>
+                        <td align="left" valign="top" style="padding:15px 30px;">
+                            <table cellpadding="30" cellspacing="30" border="0" width="100%"
+                                style="border:1px solid $bordercolor; border-radius:4px;">
+                                <tbody>
+
+                                    <tr>
+                                        <td align="left" valign="middle"
+                                            style="font-family:Helvetica, Arial, sans-serif;font-size:14px;color:#a6a6a6;padding:0px;">
+                                            Usuário de acesso:</td>
+                                        <td align="left" valign="middle"
+                                            style="font-family:Helvetica, Arial, sans-serif; font-size:14px; color:#333333; padding:0px;">
+                                            ${name}</td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" valign="middle"
+                                            style="font-family:Helvetica, Arial, sans-serif;font-size:14px;color:#a6a6a6;padding:0px;">
+                                            E-mail:</td>
+                                        <td align="left" valign="middle"
+                                            style="font-family:Helvetica, Arial, sans-serif; font-size:14px; color:#333333; padding:0px;">
+                                            ${email}</td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" valign="middle" cellspacing="30"
+                                            style="font-family:Helvetica, Arial, sans-serif;font-size:14px;color:#a6a6a6;padding:0px;">
+                                            Motivos cancelamento:</td>
+                                        <td align="left" valign="middle"
+                                            style="font-family:Helvetica, Arial, sans-serif; font-size:14px; color:#333333; padding:0px;">
+                                            ${reason}</td>
+                                    </tr>
+                                    #foreach($question in $questions)
+                                    <tr>
+                                        <td align="left" valign="middle"
+                                            style="font-family:Helvetica, Arial, sans-serif;font-size:14px;color:#a6a6a6;padding:0px;">
+                                            $question.description</td>
+                                        <td align="left" valign="middle"
+                                            style="font-family:Helvetica, Arial, sans-serif; font-size:14px; color:#333333; padding:0px;">
+                                            $question.answer</td>
+                                    </tr>
+                                    #end
+                                    <tr>
+                                        <td align="left" valign="middle"
+                                            style="font-family:Helvetica, Arial, sans-serif;font-size:14px;color:#a6a6a6;padding:0px;">
+                                            Observações:</td>
+                                        <td align="left" valign="middle"
+                                            style="font-family:Helvetica, Arial, sans-serif; font-size:14px; color:#333333; padding:0px;">
+                                            ${observations}</td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td align="left" valign="top" style="padding:20px;">
+                            <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                                <tbody>
+                                    <tr style="background-color: #f2f2f2;">
+                                        <th align="left" valign="middle"
+                                            style="font-family:Helvetica, Arial, sans-serif; padding: 7px; padding-top: 10px; padding-bottom: 10px; text-align: left; background-color: #72BF44; color: white;">
+                                            CNPJ</th>
+                                        <th align="left" valign="middle"
+                                            style="font-family:Helvetica, Arial, sans-serif; padding: 7px; padding-top: 10px; padding-bottom: 10px; text-align: left; background-color: #72BF44; color: white;">
+                                            Razão social</th>
+                                    </tr>
+                                    #foreach($supplier in $suppliers)
+                                    <tr>
+                                        <td align="left" valign="middle"
+                                            style="font-family:Helvetica, Arial, sans-serif; font-size:14px; color:#333333; padding:0px;">
+                                            $supplier.nuDocumentId</td>
+                                        <td align="left" valign="middle"
+                                            style="font-family:Helvetica, Arial, sans-serif; font-size:14px; color:#333333; padding:0px;">
+                                            $supplier.naSupplier</td>
+                                    </tr>
+                                    #end
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <!--[if (gte mso 9)|(IE)]></td></tr></table><![endif]-->
+        </div>
+    </center>
+
+</body>
+
+</html>

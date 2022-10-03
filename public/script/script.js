@@ -84,8 +84,6 @@ function fazPost(url, body) {
         msgError.setAttribute('style', 'display: none')
       }, 3000)
 
-    } else {
-
     }
 
     searchPoint()
@@ -95,6 +93,7 @@ function fazPost(url, body) {
 }
 
 function registerPoint() {
+  dataFixa()
   let inputFuncionarioId = document.querySelector('#funcionarioId')
   let labelFuncionarioId = document.querySelector('#labelFuncionarioId')
   let inputDescricao = document.querySelector('#descricao')

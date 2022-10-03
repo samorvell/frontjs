@@ -152,9 +152,11 @@ function clear() {
 function fazPost(url, body) {
     console.log("Body=", body)
     let request = new XMLHttpRequest()
+    let compId = localStorage.getItem('companyId', companyId)
     request.open("POST", url, true)
     request.setRequestHeader("Content-Type", "application/json")
     request.setRequestHeader("Authorization", "Bearer " + pegatoken)
+    request.setRequestHeader("companyId", compId)
     request.send(JSON.stringify(body))
 
 
@@ -171,6 +173,7 @@ function regfunc() {
     //let url = "http://localhost:4050/api/cadastrar-pj"
     event.preventDefault()
 
+    let compId = localStorage.getItem('companyId', companyId)
     let nome = document.getElementById("nome").value
     let email = document.getElementById("email").value
     let senha = document.getElementById("senha").value
@@ -185,7 +188,8 @@ function regfunc() {
         "senha": senha,
         "cpf": cpf,
         "valorHora": valorHora,
-        "cnpj": cnpj
+        "cnpj": cnpj,
+        "empresaId": compId
     }
 
     if (validNome && validValorHora &&
